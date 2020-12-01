@@ -9,19 +9,17 @@ import SignIn from './Components/Authentication/SignIn';
 
 
 class App extends React.Component{
-  constructor(){  
+  constructor(){
     super();
     this.state={
-      tmp: 1
+      authorised: 0
     }
-    this.ChangeState=()=>{
-      this.setState({
-        tmp: 2
-      })
 
-    }
+
   }
-  render(){
+
+
+    render(){
   	return(
       <div className='App'>
         <Router>
@@ -33,8 +31,8 @@ class App extends React.Component{
             <Route exact path='/register' component={Register} />
           </Switch>
         </Router>
-        <p>{this.state.tmp}</p>
-        <button onClick={this.ChangeState} >Change state</button>
+        {/* <p>tmp : {this.state.tmp}</p> */}
+        {/* <button onClick={this.ChangeState} >Change state</button> */}
       </div>
     );
   }
