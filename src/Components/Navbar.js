@@ -7,7 +7,9 @@ import 'jquery'
 // import 'bootstrap/dist/js/popper.min.js';
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({authorised}) => {
+
+  console.log("AUTHORISED: "+ authorised)
   return (
     // <Fragment>
     <div className="nav-container">
@@ -15,20 +17,39 @@ const Navbar = () => {
   <p className="navbar-brand" to="/">Foodie-go</p>
 
   <div className="collapse navbar-collapse" >
-    <ul className="navbar-nav ">
-      <li className="nav-item">
-        <NavLink className="nav-link " exact to="/">Home</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" exact to="/about">About</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" exact to="/register">Register</NavLink>
-      </li>
-    </ul>
+      {
+      (parseInt(authorised)===1)?(
+      <ul className="navbar-nav ">
+
+        <li className="nav-item">
+          <NavLink className="nav-link " exact to="/">Home</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/about">About</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/register">Register</NavLink>
+        </li>
+      </ul>
+      ):(
+      <ul className="navbar-nav ">
+
+        <li className="nav-item">
+          <NavLink className="nav-link " exact to="/">Home</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/register">Register</NavLink>
+        </li>
+      </ul>
+
+      )
+      }
   </div>
 </nav>
     </div>

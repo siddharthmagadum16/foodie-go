@@ -8,11 +8,25 @@ const Signin =  ()=>{
     // .then(res=>console.log(res.data))
     .catch(err=>console.log(`Error ${err}`))
 
+    function onSubmitSignin(props){
+        console.log(props)
+        // console.log(props.username)
+        // console.log(props.password)
+        props.preventDefault();
+
+    }
+
+
+
     return (
         <Fragment>
-            <input name='username' ></input>
-            <input name='button' type='submit'></input>
+            <form onSubmit={onSubmitSignin}>
 
+                <input name='username' ></input>
+                <input name='password' ></input>
+                <input name='button' type='submit'></input>
+
+            </form>
             <h1>Sign In</h1>
 
         </Fragment>

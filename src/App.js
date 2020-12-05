@@ -6,7 +6,7 @@ import Home from './Components/Home';
 import About from './Components/About';
 import Register from './Components/Authentication/Register';
 import SignIn from './Components/Authentication/SignIn';
-
+import NotFound from './Components/NotFound';
 
 class App extends React.Component{
   constructor(){
@@ -14,22 +14,39 @@ class App extends React.Component{
     this.state={
       authorised: 0
     }
-
-
+    this.ChangeAuthState=()=>{
+      this.setState({authorised: 1},()=> console.log(`state changed to : ${this.state.authorised}`)
+      )
+    }
   }
 
-
-    render(){
+  render(){
+    console.log(this.state.authorised)
   	return(
       <div className='App'>
         <Router>
-          <Navbar/>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/signin' component={SignIn} />
-            <Route exact path='/register' component={Register} />
-          </Switch>
+          <Navbar authorised={this.state.authorised}/>
+          {
+
+            // (this.state.authorised)?(
+
+              <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/signin' component={SignIn} />
+              <Route exact path='/register' component={Register} ChangeAuthState={this.ChangeAuthState}/>
+              <Route exact path='*' component={NotFound}/>
+            </Switch>
+            // ):(
+
+            // <Switch>
+            //   <Route exact path='/' component={Home} />
+            //   <Route exact path='/signin' component={SignIn} />
+            //   <Route exact path='/register' component={Register} />
+            //   <Route exact path='*' component={NotFound} />
+            // </Switch>
+            // )
+          }
         </Router>
         {/* <p>tmp : {this.state.tmp}</p> */}
         {/* <button onClick={this.ChangeState} >Change state</button> */}
