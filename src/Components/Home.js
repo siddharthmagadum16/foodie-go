@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import {NavLink} from "react-router-dom";
 
-const Home =  ()=>{
+class Home extends React.Component{
+    // constructor(props){
+    //     super(props);
 
-    // componentDidMount(){
-
-        fetch('http://localhost:3000/')
-        .then(res=> res.json())
-        .then(res=>console.log(res))
-        // .then(res=>console.log(res.data))
-        .catch(err=>console.log(`Error ${err}`))
     // }
 
-    return (
-        <h1>Home</h1>
-    )
+    render(){
+
+        return(
+            <Fragment>
+                <div>
+                    <ul className="navbar-nav">
+                        <li >
+                            <NavLink  exact to="/home/buy"><strong>Buy</strong> some foodies</NavLink>
+                        </li>
+                        <li className="">
+                            <NavLink  exact to="home/sell"><strong>Sell</strong> some foodies</NavLink>
+                        </li>
+                    </ul>
+                </div>
+
+            </Fragment>
+        )
+    }
 }
+
 
 export default Home;

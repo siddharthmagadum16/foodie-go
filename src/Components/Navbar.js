@@ -7,6 +7,7 @@ import 'jquery'
 // import 'bootstrap/dist/js/popper.min.js';
 import './Navbar.css'
 
+
 const Navbar = ({authorised}) => {
 
   console.log("AUTHORISED: "+ authorised)
@@ -22,23 +23,21 @@ const Navbar = ({authorised}) => {
       <ul className="navbar-nav ">
 
         <li className="nav-item">
-          <NavLink className="nav-link " exact to="/">Home</NavLink>
+          <NavLink className="nav-link " exact to="/home">Home</NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about">About</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>
+          <NavLink className="nav-link" exact to="/signin">Sign Out</NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/register">Register</NavLink>
-        </li>
+
       </ul>
       ):(
       <ul className="navbar-nav ">
 
         <li className="nav-item">
-          <NavLink className="nav-link " exact to="/">Home</NavLink>
+          <NavLink className="nav-link" exact to="/about">About</NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>

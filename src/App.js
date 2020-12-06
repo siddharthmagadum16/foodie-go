@@ -4,9 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Components/Navbar'
 import Home from './Components/Home';
 import About from './Components/About';
-import Register from './Components/Authentication/Register';
-import SignIn from './Components/Authentication/SignIn';
+import Register from './Components/Register';
+import SignIn from './Components/SignIn';
+// import SignOut from './Components/SignOut';
 import NotFound from './Components/NotFound';
+import BuyFood from './Components/Buy';
+import SellFood from './Components/Sell';
 
 class App extends React.Component{
   constructor(){
@@ -14,47 +17,43 @@ class App extends React.Component{
     this.state={
       authorised: 0
     }
-    this.ChangeAuthState=()=>{
-      this.setState({authorised: 1},()=> console.log(`state changed to : ${this.state.authorised}`)
-      )
-    }
+    this.changeAuth=this.changeAuth.bind(this)
+  }
+
+
+  changeAuth=()=>{
+    this.setState({authorised: 1},()=> console.log(`state changed to : ${this.state.authorised}`)
+    )
   }
 
   render(){
+    // {/* <Route exact path='/signout' component={SignOut} /> */}
     console.log(this.state.authorised)
   	return(
       <div className='App'>
         <Router>
-          <Navbar authorised={this.state.authorised}/>
+          <Navbar authorised={this.state.authorised} />
           {
 
-            // (this.state.authorised)?(
-
-              <Switch>
-              <Route exact path='/' component={Home} />
+            <Switch>
+              <Route exact path='/home' component={Home} />
               <Route exact path='/about' component={About} />
-              <Route exact path='/signin' component={SignIn} />
-              <Route exact path='/register' component={Register} ChangeAuthState={this.ChangeAuthState}/>
+              <Route exact path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
+              <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
+              <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
+              <Route exact path='/home/buy' component={BuyFood} />
+              <Route exact path='/home/sell' component={SellFood} />
               <Route exact path='*' component={NotFound}/>
             </Switch>
-            // ):(
 
-            // <Switch>
-            //   <Route exact path='/' component={Home} />
-            //   <Route exact path='/signin' component={SignIn} />
-            //   <Route exact path='/register' component={Register} />
-            //   <Route exact path='*' component={NotFound} />
-            // </Switch>
-            // )
           }
         </Router>
-        {/* <p>tmp : {this.state.tmp}</p> */}
-        {/* <button onClick={this.ChangeState} >Change state</button> */}
       </div>
     );
   }
 }
 
+// export changeAuth;
 export default App;
 
     /*

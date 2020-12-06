@@ -1,16 +1,15 @@
-import React from 'react';
+import React from 'react'
+import './About.css'
 
-const About=  ()=>{
+export class About extends React.Component {
+    render() {
+        return (
+            <div className='aboutcss'>
+                About
 
-    fetch('http://localhost:3000/about')
-    .then(res=> res.json())
-    .then(res=>console.log(res))
-    // .then(res=>console.log(res.data))
-    .catch(err=>console.log(`Error ${err}`))
-
-    return (
-        <h1>About</h1>
-    )
+            </div>
+        )
+    }
 }
 
-export default About;
+export default About
