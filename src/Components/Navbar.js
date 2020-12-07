@@ -29,7 +29,10 @@ const Navbar = ({authorised}) => {
           <NavLink className="nav-link" exact to="/about">About</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signin">Sign Out</NavLink>
+          <NavLink className="nav-link" exact to="/signin"
+          // onClick={()=>{window.location.reload();}}
+          onClick={() => {window.location.href="/"}}
+          >Sign Out</NavLink>
         </li>
 
       </ul>

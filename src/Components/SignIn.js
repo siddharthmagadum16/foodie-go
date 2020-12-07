@@ -20,7 +20,8 @@ export class Signin extends React.Component {
                 console.log(res)
                 if(res===1){
                     console.log("signed in")
-                    console.log(props.changeAuth())
+                    // props.setState({username:this .state.username})
+                    console.log(props.changeAuth(this.state.username))
 
                 } else{
                     this.setState({signin_status:'Invalid email or password'})

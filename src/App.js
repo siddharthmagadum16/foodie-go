@@ -15,14 +15,21 @@ class App extends React.Component{
   constructor(){
     super();
     this.state={
-      authorised: 0
+      authorised: 0,
+      username: '',
     }
     this.changeAuth=this.changeAuth.bind(this)
+    console.log(`username in App.js ${this.state.username}`)
   }
 
 
-  changeAuth=()=>{
-    this.setState({authorised: 1},()=> console.log(`state changed to : ${this.state.authorised}`)
+  changeAuth=(username)=>{
+    this.setState({
+      authorised: (this.state.authorised===1)?0:1,
+      username: username
+      // username: username,
+    },()=> console.log(`state changed to : ${this.state.authorised} username: ${this.state.username} `)
+
     )
   }
 
@@ -32,17 +39,17 @@ class App extends React.Component{
   	return(
       <div className='App'>
         <Router>
-          <Navbar authorised={this.state.authorised} />
+          <Navbar authorised={this.state.authorised} changeAuth={this.changeAuth}/>
           {
 
             <Switch>
-              <Route exact path='/home' component={Home} />
+              <Route exact default path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
               <Route exact path='/about' component={About} />
-              <Route exact path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
               <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
               <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
-              <Route exact path='/home/buy' component={BuyFood} />
-              <Route exact path='/home/sell' component={SellFood} />
+              <Route exact path='/home' component={()=> <Home />} />
+              <Route exact path='/home/buy' component={()=><BuyFood  />} />
+              <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
               <Route exact path='*' component={NotFound}/>
             </Switch>
 

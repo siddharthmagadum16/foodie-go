@@ -5,7 +5,6 @@ export class About extends React.Component {
     render() {
         return (
             <div className='aboutcss'>
-                About
 
             </div>
         )
@@ -13,3 +12,4 @@ export class About extends React.Component {
 }
 
 export default About
+
