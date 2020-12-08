@@ -16,7 +16,7 @@ class App extends React.Component{
     super();
     this.state={
       authorised: 0,
-      username: '',
+      username: ''
     }
     this.changeAuth=this.changeAuth.bind(this)
     console.log(`username in App.js ${this.state.username}`)

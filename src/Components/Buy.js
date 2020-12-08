@@ -14,16 +14,18 @@ export class BuyFood extends React.Component {
                         style={{"listStyleType":"none"}}
                         className='foodcard'
                     >
-                        <ul style={{"listStyleType":"none"}}>
+                        <ul
+                        // onClick={()=>selectFood(each[0])}
+                        style={{"listStyleType":"none"}}>
                             <li>{each[1]}       </li>
                             <li>{each[2]}       </li>
                             <li>{each[3]}       </li>
                             <li>{each[4]}       </li>
-                            <li>{each[5]}       </li>
                         </ul>
                 </li>
             )
         }
+
         this.getFoodList=()=>{
             axios.get('http://localhost:3000/home/buy')
             .then(res=>{
@@ -38,8 +40,10 @@ export class BuyFood extends React.Component {
                 >{this.state.list}</ul>})
             })
             .catch(err=>console.log("Error while fetching food list \n"+err))
-
         }
+
+        // this.selectFood=(foodid)=>{
+        // }
     }
 
     componentDidMount=()=>{
