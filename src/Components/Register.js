@@ -40,13 +40,14 @@ export class Register extends React.Component {
             <h1>Register</h1>
             <form  onSubmit={this.onSubmitRegister} method='POST' >
             {/* <div> */}
-
+                <label>Email</label>
                 <input
                     name='username'
                     value={username}
                     onChange={this.changeHandler}
                     type='text'
                     />
+                <label>Password</label>
                 <input
                     name='password'
                     value={password}

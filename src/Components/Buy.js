@@ -17,10 +17,10 @@ export class BuyFood extends React.Component {
                         <ul
                         // onClick={()=>selectFood(each[0])}
                         style={{"listStyleType":"none"}}>
-                            <li>{each[1]}       </li>
                             <li>{each[2]}       </li>
                             <li>{each[3]}       </li>
                             <li>{each[4]}       </li>
+                            <li>{each[5]}       </li>
                         </ul>
                 </li>
             )
