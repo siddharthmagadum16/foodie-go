@@ -1,0 +1,20 @@
+.foodcard {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid black;
+    display: inline-block;
+    background-color: lightgrey;
+  }
+
+  form {
+        border: 3px solid #f1f1f1;
+  }
+
+  input[type=text]{
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }

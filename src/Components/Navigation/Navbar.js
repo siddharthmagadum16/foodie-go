@@ -10,14 +10,18 @@ import './Navbar.css'
 
 const Navbar = ({authorised}) => {
 
-  console.log("AUTHORISED: "+ authorised)
+  const SignOut=()=>{
+    window.location.href="/signin"
+    window.localStorage.setItem("authorised","0")
+  }
+  // console.log("AUTHORISED: "+ authorised)
   return (
     // <Fragment>
     <div className="nav-container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <p className="navbar-brand" to="/">Foodie-go</p>
 
-  <div className="collapse navbar-collapse" >
+  <div className="co" >
       {
       (parseInt(authorised)===1)?(
       <ul className="navbar-nav ">
@@ -26,13 +30,12 @@ const Navbar = ({authorised}) => {
           <NavLink className="nav-link " exact to="/home">Home</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about">About</NavLink>
+          <NavLink className="" exact to="/about">  About</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signin"
-          // onClick={()=>{window.location.reload();}}
-          onClick={() => {window.location.href="/"}}
-          >Sign Out</NavLink>
+          <NavLink className="nav-link" exact to="/signin" onClick={SignOut}>
+            Sign Out
+          </NavLink>
         </li>
 
       </ul>

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+.bgimg {
+    background-image: url('./is.jpg');
+    /* background-color: blue; */
+    background-size: cover;
+    height: 95vh;
+    padding-top:  4rem;
+    /* width: 80% */
+    align-content: center; 
+    justify-content: center;
+
+}
+
+.aboutus{
+    font-size: 4rem;
+    font-family: 'Langar', cursive;
+}
+
+.para{
+    font-size: 2rem;
+}
+
+.bgtext{
+
+    background-color: rgba(245, 245, 245, 0.45);
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+    /* margin-top:  6vw; */
+    align-self: center;
+    border: .5vw solid rgba(255, 253, 253, 0.59);
+    border-radius: 1rem;
+    /* margin: 6vw 20vw 6vw ;  decide the width you want to keep */
+    padding: 2vw;
+    /* padding-bottom: 54rem; */
+    /* line-height: 2rem; */
+    box-shadow:rgba(0, 0, 0, 0.5) -5px -5px 9px 5px, rgba(0, 0, 0, 0.5) 5px 5px 9px 5px, inset 10px 10px 20px rgba(250, 248, 248, 0.5), inset -10px -10px 20px rgba(240, 233, 233, 0.5);
+    /* box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, inset rgba(249, 253, 4, 0.425) 0px -10px 30px -5px; */
+    width: 64rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 17%;
+}

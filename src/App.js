@@ -1,16 +1,16 @@
 import './App.css';
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './Components/Navbar'
-import Home from './Components/Home';
-import About from './Components/About';
-import Register from './Components/Register';
-import SignIn from './Components/SignIn';
+import Navbar from './Components/Navigation/Navbar'
+import Home from './Components/Home/Home';
+import About from './Components/About/About';
+import Register from './Components/Authentication/Register';
+import SignIn from './Components/Authentication/SignIn';
 // import SignOut from './Components/SignOut';
 import NotFound from './Components/NotFound';
-import BuyFood from './Components/Buy';
-import SellFood from './Components/Sell';
-
+import BuyFood from './Components/Home/Home-components/Buy';
+import SellFood from './Components/Home/Home-components/Sell';
+// let loggedin=0;
 class App extends React.Component{
   constructor(){
     super();
@@ -19,7 +19,6 @@ class App extends React.Component{
       username: ''
     }
     this.changeAuth=this.changeAuth.bind(this)
-    console.log(`username in App.js ${this.state.username}`)
   }
 
 
@@ -33,49 +32,56 @@ class App extends React.Component{
     )
   }
 
+  componentDidMount(){
+    const Loggedin=window.localStorage.getItem("authorised");
+    if(Loggedin!==undefined){
+      this.setState({authorised:parseInt(Loggedin)})
+    }else{
+      this.setState({authorised:0})
+      window.localStorage.setItem("authorised","0");
+    }
+  }
+
+  componentDidUpdate(){
+    window.localStorage.setItem("authorised",this.state.authorised);
+  }
+
   render(){
-    // {/* <Route exact path='/signout' component={SignOut} /> */}
     console.log(this.state.authorised)
   	return(
       <div className='App'>
         <Router>
-          <Navbar authorised={this.state.authorised} changeAuth={this.changeAuth}/>
+          <Navbar authorised={this.state.authorised}/>
           {
-
+            (this.state.authorised===1)?(
             <Switch>
               <Route exact default path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
               <Route exact path='/about' component={About} />
               <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
               <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
-              <Route exact path='/home' component={()=> <Home />} />
-              <Route exact path='/home/buy' component={()=><BuyFood  />} />
-              <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
-              <Route exact path='*' component={NotFound}/>
+                <Route exact path='/home' component={()=> <Home />} />
+                <Route exact path='/home/buy' component={()=><BuyFood  />} />
+                <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
             </Switch>
+            ):(
+              <Switch>
+                <Route exact path='/about' component={About} />
+                <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
+                <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
+                <Route exact path='*' component={NotFound} />
+              </Switch>
+              )
+            }
 
-          }
         </Router>
       </div>
     );
   }
 }
 
-// export changeAuth;
 export default App;
 
     /*
 
-    <div>
-
-    <Router>
-    <div className="App">
-    <Navbar/>
-    <Switch>
-    <Home exact    Component={Home} />
-    <About exact path='./Components/About'  Component={About}/>
-    </Switch>
-    </div>
-    </Router>
-            </div>
 
 */

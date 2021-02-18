@@ -1,0 +1,36 @@
+/*.foodcard{
+    box-sizing: border-box;
+    width:100px;
+    padding-right: 200px;
+    padding-left: 1px;
+    border: 2px solid black;
+    display: inline-block;
+    background-color: lightgrey;
+}*/
+
+.foodcard{
+    display: grid;
+    gap: 33vw;
+    grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid white;
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform.2s;
+
+}
+.foodcard:hover{
+    transform:scale(1.5);
+}
+
+.bgimg {
+    /* background-color: blue; */
+    background-size: cover;
+    height: 95vh;
+    padding-top:  4rem;
+    /* width: 80% */
+    align-content: center;
+    justify-content: center;
+}

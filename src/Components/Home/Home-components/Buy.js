@@ -55,7 +55,9 @@ export class BuyFood extends React.Component {
 
         return (
             <Fragment>
-                {this.state.list}
+                <div classname='bgimg'>
+                    {this.state.list}
+                </div>
             </Fragment>
         )
 

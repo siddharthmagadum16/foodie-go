@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import {NavLink} from "react-router-dom";
+// import {NavLink} from "react-router-dom";
 import axios from 'axios'
+import './SignIn.css'
 
 
 export class Signin extends React.Component {
@@ -18,13 +19,12 @@ export class Signin extends React.Component {
             axios.post('http://localhost:3000/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
-                console.log(res)
+                // console.log(res)
                 if(res===1){
-                    console.log("signed in")
+                    // console.log("signed in")
                     // props.setState({username:this .state.username})
-                    console.log(props.changeAuth(this.state.username))
-
-
+                    // console.log(props.changeAuth(this.state.username))
+                    props.changeAuth(this.state.username)
                 } else{
                     this.setState({signin_status:'Invalid email or password'})
                     console.log(`unable to signin`)
@@ -36,9 +36,9 @@ export class Signin extends React.Component {
         this.changeHandler=(event)=>{
             this.setState({
             [event.target.name]: event.target.value
-            },()=>console.log(`${this.state.username}${this.state.password}`))
+            })
+            // ,()=>console.log(`${this.state.username}${this.state.password}`))
         }
-
     }
     render(){
         const { username, password}=this.state
@@ -47,22 +47,28 @@ export class Signin extends React.Component {
             <div className='signincard'>
 
                 <h1>Sign In</h1>
-                <form  onSubmit={this.onSubmitSignin} method='POST' >
-                    <label>Email</label>
+                <br/>
+                <form   onSubmit={this.onSubmitSignin} method='POST' >
+                    <label>Username         :</label>
                     <input
                         name='username'
-                        placeholder='Enter you Email'
+                        placeholder='Enter you Username'
                         value={username}
                         onChange={this.changeHandler}
                         type='text'
                     />
-                    <label>Password</label>
+                    <br/>
+                    <br/>
+                    <label>Password        :</label>
                     <input
                         name='password'
+                        placeholder='Enter you Password'
                         value={password}
                         onChange={this.changeHandler}
                         type='password'
                     />
+                    <br/>
+                    <br/>
                     <input
                         name='button'
                         type='submit'
