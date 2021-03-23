@@ -1,3 +1,113 @@
-.navbar-brand{
-    margin: 0;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
 }
+nav{
+  	position: relative;
+  	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: black;
+	height: 60px;
+    z-index: 1;
+
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+	/* padding: 1rem; */
+	padding-left: 2rem;
+	justify-content: center;
+
+
+}
+nav ul li a:hover{
+    text-decoration: none;
+}
+nav ul li.name{
+    display: flex;
+    flex:1;
+	font-size: 1.6rem;
+}
+
+
+nav ul li{
+    padding: 15px 0;
+    padding: 1.3rem 1rem 0rem 1rem;
+    cursor: pointer;
+}
+nav  ul li.items{
+    position: relative;
+    width: auto;
+    margin: 0 16px 0 0;
+	order: 3;
+	font-size: 1.2rem;
+}
+nav ul li.items a{
+	left: 50%;
+}
+nav ul li.items:after{
+    position: absolute;
+  content: '';
+  left: 0;
+  bottom: 5px;
+  height: 2px;
+  width: 100%;
+  background: #33ffff;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+nav ul li.items:hover:after{
+  opacity: 1;
+  bottom: 8px;
+}
+nav ul li.leftsub{ /*_______*/
+  flex: 1;
+  color: white;
+  font-size: 3vw;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+nav ul li.leftsub b{
+    justify-content: center;
+    align-items: center;
+}
+nav ul li.leftsub b:hover{
+    /* text-shadow: 2px 2px 4px #04f704 ; */
+    text-shadow: 2px 2px 1px rgb(24, 29, 22), 5px 5px 6px rgb(227, 252, 3);
+    transition: .3s;
+}
+
+nav ul li:hover p{
+    color: cyan;
+}
+nav ul li i{
+    font-size: 23px;
+}
+nav ul li.btn{
+    display: none;
+}
+nav ul li.btn.hide i:before{
+    content: '\f00d';
+}
+
+
+
+
+/* this is working!fine\/ */
+/* comment this whole block off if you aren't able ot scroll*/
+.sticky {
+	/* position : absolute; */
+    /* position: fixed; */
+    /* height: 1rem; */
+    /* width: 100%;
+    top: 0; */
+}
+
+

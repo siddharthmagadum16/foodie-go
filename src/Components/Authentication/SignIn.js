@@ -49,10 +49,10 @@ export class Signin extends React.Component {
                 <h1>Sign In</h1>
                 <br/>
                 <form   onSubmit={this.onSubmitSignin} method='POST' >
-                    <label>Username         :</label>
+                    <label>Email      :</label>
                     <input
                         name='username'
-                        placeholder='Enter you Username'
+                        placeholder='Enter you e-mail'
                         value={username}
                         onChange={this.changeHandler}
                         type='text'

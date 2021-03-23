@@ -1,9 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 // import About from "./About";
-import 'react-bootstrap'
-import 'bootstrap'
-import 'jquery'
+// import 'react-bootstrap'
+// import 'bootstrap'
+// import 'jquery'
 // import 'bootstrap/dist/js/popper.min.js';
 import './Navbar.css'
 
@@ -16,48 +16,46 @@ const Navbar = ({authorised}) => {
   }
   // console.log("AUTHORISED: "+ authorised)
   return (
-    // <Fragment>
-    <div className="nav-container">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-  <p className="navbar-brand" to="/">Foodie-go</p>
+      <nav className='sticky'>
 
-  <div className="co" >
-      {
-      (parseInt(authorised)===1)?(
-      <ul className="navbar-nav ">
+            {
+            (parseInt(authorised)===1)?(
+            <ul className="">
 
-        <li className="nav-item">
-          <NavLink className="nav-link " exact to="/home">Home</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="" exact to="/about">  About</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signin" onClick={SignOut}>
-            Sign Out
-          </NavLink>
-        </li>
+              <li className="name">
+                <NavLink className="name-link" exact to="/"> <div>Foodie-go</div></NavLink>
+              </li>
+              <li className="items">
+                <NavLink className=" " exact to="/home">Home</NavLink>
+              </li>
+              <li className="items">
+                <NavLink className="" exact to="/about">  About</NavLink>
+              </li>
+              <li className="items">
+                <NavLink className="" exact to="/signin" onClick={SignOut}>
+                  Sign Out
+                </NavLink>
+              </li>
+            </ul>
+            ):(
+            <ul className=" ">
+             <li className="name">
+                <NavLink className=" " exact to="/">Foodie-go</NavLink>
+              </li>
+              <li className="items">
+                <NavLink className="" exact to="/about">About</NavLink>
+              </li>
+              <li className="items">
+                <NavLink className="" exact to="/signin">SignIn</NavLink>
+              </li>
+              <li className="items">
+                <NavLink className="" exact to="/register">Register</NavLink>
+              </li>
+            </ul>
 
-      </ul>
-      ):(
-      <ul className="navbar-nav ">
-
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about">About</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signin">SignIn</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/register">Register</NavLink>
-        </li>
-      </ul>
-
-      )
-      }
-  </div>
-</nav>
-    </div>
+            )
+            }
+      </nav>
   );
 };
 

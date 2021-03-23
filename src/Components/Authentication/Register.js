@@ -44,7 +44,7 @@ export class Register extends React.Component {
                 <label>Email        :</label>
                 <input
                     name='Username'
-                    placeholder='Enter you Email'
+                    placeholder='Enter you e-mail'
                     value={username}
                     onChange={this.changeHandler}
                     type='text'

@@ -51,10 +51,14 @@ class App extends React.Component{
   	return(
       <div className='App'>
         <Router>
-          <Navbar authorised={this.state.authorised}/>
+        <div className='header'  >
+            <Navbar authorised={this.state.authorised}/>
+        </div>
+        <div className='body'>
+
           {
             (this.state.authorised===1)?(
-            <Switch>
+              <Switch>
               <Route exact default path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
               <Route exact path='/about' component={About} />
               <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
@@ -71,7 +75,8 @@ class App extends React.Component{
                 <Route exact path='*' component={NotFound} />
               </Switch>
               )
-            }
+          }
+        </div>
 
         </Router>
       </div>

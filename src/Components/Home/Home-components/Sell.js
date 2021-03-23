@@ -10,7 +10,8 @@ export class SellFood extends React.Component {
             name: '',
             price: '',
             place: '',
-            contactno: ''
+            contactno: '',
+            image:''
 
     };
     // this.getFoodList=this.getFoodList.bind(this)
@@ -40,7 +41,8 @@ export class SellFood extends React.Component {
     console.log(`props ${props}`);
     this.getFoodList = () => {
         console.log('getfood list clg')
-        let userurl = 'http://localhost:3000/home/sell/'.concat(props.username)
+
+          let userurl = 'http://localhost:3000/home/sell/'.concat(props.username)
         console.log("USER url "+userurl)
         axios
         .post(userurl)
@@ -50,7 +52,7 @@ export class SellFood extends React.Component {
 
           console.log(typeof res.data);
           this.setState({
-            list: res.data.map((value) => Object.values(value))
+            list: res.data.map((value) => Object.values(value).toString())
           });
           console.log(`seller's list length is ${this.state.list.length}`)
           if(this.state.list.length===0){
@@ -61,7 +63,7 @@ export class SellFood extends React.Component {
             this.setState({
                 list: <ul className="cardsgrid">{this.state.list}</ul>
             });
-            
+
           }
         })
         .catch((err) =>
@@ -73,14 +75,52 @@ export class SellFood extends React.Component {
     this.changeHandler=(event)=>{
         this.setState({
             [event.target.name]: event.target.value
-            // fooddocument.username : event.target.value
+            // fooddocumented.username : event.target.value
             // list: this.state.list,
             // fooddocument.username: event.target.username.value
         })
+        // console.log(event)
     }
+    // const uploadImage= React.createRef(null);
 
+    // this.handleImageUpload = e => {
+    //   const [file] = e.target.files;
+    //   if (file) {
+    //     const reader= new FileReader();
+    //     const {current}= uploadImage;
+    //     current.file= file;
+    //     reader.onload=  (e) =>{
+    //       current.src = e.target.result;
+    //     }
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
+
+    this.handleImageUpload=(event)=>{
+      console.log(event);
+      // this.setState({image : event.target.file})
+
+      let fd= new FormData();
+      console.log(this.state.image)
+      fd.append('files',this.state.image,this.state.image.originalname)
+      let statebody = Object.assign({},this.state,{image:null})
+      fd.append('state',JSON.stringify(statebody))
+      console.log("fd "+ fd);
+
+      axios.post('http://localhost:3000/home/sell/insert/food/image',fd)
+          .then((res)=>{ console.log("Image uploaded " + res)})
+          .catch((e)=>{
+          console.log(e)
+      })
+  }
+
+  // handleFiles(e){
+  //     this.setState({files:e.target.files})
+  //   }
+//  INSERT ING food ________________________________________________________________1
     this.onSubmitFoodstuff=(event)=>{
         event.preventDefault();
+        console.log(this.state.username)
         console.log(`fooddocument : ${this.state}`)
         axios.post('http://localhost:3000/home/sell/insert/food',this.state)
         .then(res=>parseInt(res.data))
@@ -114,7 +154,8 @@ export class SellFood extends React.Component {
           <div>{this.state.list}</div>
           <div className='addfoodstuff'>
                 <h1>Homecooks, do you want to sell food?</h1>
-                <form  onSubmit={this.onSubmitFoodstuff} method='POST' enctype="multipart/form-data" >
+
+                <form  onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                     <label>Food name         :</label>
                     <input
                         name='name'
@@ -134,7 +175,7 @@ export class SellFood extends React.Component {
                         type='text'
                         />
                     <br/>
-<br/>
+                    <br/>
                     <label>Place         :</label>
                     <input
                         name='place'
@@ -143,8 +184,8 @@ export class SellFood extends React.Component {
                         onChange={this.changeHandler}
                         type='text'
                     />
-<br/>
-<br/>
+                    <br/>
+                    <br/>
                     <label>Contact Number        :</label>
                     <input
                         name='contactno'
@@ -154,19 +195,32 @@ export class SellFood extends React.Component {
                         type='text'
                     />
                     <br/>
-<br/>
-                    {/* <label>Upload Food Image</label> */}
-                    {/* <input
-                        name='image'
-                        onChange={this.changeHandler}
-                        type='file'
-                        name='ipfile'
-                    /> */}
+                    <br/>
+                    <input
+                      type='file'
+                      id='image'
+                      name='image'
+                      accept='image/*'
+                      onChange={this.handleImageUpload}
+                      value={this.state.image}
+                      />
+
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        position: "absolute"
+                      }}
+                      alt='upload image'
+                    />
+                    <div> {this.state.image} </div>
+                  <br/>
+
                     <input
                         name='button'
                         type='submit'
-                    />
-<br/>
+                        />
+                    <br/>
                     <br/>
 
                 </form>
