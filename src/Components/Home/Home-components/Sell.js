@@ -11,7 +11,7 @@ export class SellFood extends React.Component {
             price: '',
             place: '',
             contactno: '',
-            image:''
+            image: null
 
     };
     // this.getFoodList=this.getFoodList.bind(this)
@@ -32,6 +32,7 @@ export class SellFood extends React.Component {
             <li key="3">{each[3]} </li>
             <li key="4">{each[4]} </li>
             <li key="5">{each[5]} </li>
+            {/* <li key="6">{each </li> */}
           </ul>
           <button onClick={()=>this.deleteFood(each[0],props.username)} >Remove</button>
         </li>
@@ -75,48 +76,27 @@ export class SellFood extends React.Component {
     this.changeHandler=(event)=>{
         this.setState({
             [event.target.name]: event.target.value
-            // fooddocumented.username : event.target.value
-            // list: this.state.list,
-            // fooddocument.username: event.target.username.value
         })
-        // console.log(event)
     }
-    // const uploadImage= React.createRef(null);
 
-    // this.handleImageUpload = e => {
-    //   const [file] = e.target.files;
-    //   if (file) {
-    //     const reader= new FileReader();
-    //     const {current}= uploadImage;
-    //     current.file= file;
-    //     reader.onload=  (e) =>{
-    //       current.src = e.target.result;
-    //     }
-    //     reader.readAsDataURL(file);
-    //   }
-    // }
+
+
 
     this.handleImageUpload=(event)=>{
-      console.log(event);
-      // this.setState({image : event.target.file})
+      if (event.target.files && event.target.files[0]) {
+        let img = event.target.files[0];
+        this.setState({
+          image: URL.createObjectURL(img)
+        },()=>{
+          console.log(this.state.image)
+        });
+      }
+    }
 
-      let fd= new FormData();
-      console.log(this.state.image)
-      fd.append('files',this.state.image,this.state.image.originalname)
-      let statebody = Object.assign({},this.state,{image:null})
-      fd.append('state',JSON.stringify(statebody))
-      console.log("fd "+ fd);
+    this.updateSelection=(e)=>{
+      this.setState({image: e.target.files[0]});
+    }
 
-      axios.post('http://localhost:3000/home/sell/insert/food/image',fd)
-          .then((res)=>{ console.log("Image uploaded " + res)})
-          .catch((e)=>{
-          console.log(e)
-      })
-  }
-
-  // handleFiles(e){
-  //     this.setState({files:e.target.files})
-  //   }
 //  INSERT ING food ________________________________________________________________1
     this.onSubmitFoodstuff=(event)=>{
         event.preventDefault();
@@ -136,8 +116,6 @@ export class SellFood extends React.Component {
         })
         .catch(err=>console.log(err))
     }
-
-
   }
 
   componentDidMount = () => {
@@ -157,69 +135,37 @@ export class SellFood extends React.Component {
 
                 <form  onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                     <label>Food name         :</label>
-                    <input
-                        name='name'
-                        placeholder='e.g. Veg fried rice'
-                        value={name}
-                        onChange={this.changeHandler}
-                        type='text'
-                    />
+                    <input name='name' placeholder='e.g. Veg fried rice'
+                    value={name} onChange={this.changeHandler} type='text'/>
+
                     <br/>
                     <br/>
                     <label>Price       :</label>
-                    <input
-                        name='price'
-                        placeholder='e.g. Rs 100'
-                        value={price}
-                        onChange={this.changeHandler}
-                        type='text'
-                        />
+                    <input name='price' placeholder='e.g. Rs 100' value={price}
+                    onChange={this.changeHandler} type='text'/>
+
                     <br/>
                     <br/>
+
                     <label>Place         :</label>
-                    <input
-                        name='place'
-                        placeholder='e.g. MG Road'
-                        value={place}
-                        onChange={this.changeHandler}
-                        type='text'
-                    />
+                    <input name='place' placeholder='e.g. MG Road'
+                    value={place} onChange={this.changeHandler} type='text'/>
+
                     <br/>
                     <br/>
                     <label>Contact Number        :</label>
-                    <input
-                        name='contactno'
-                        placeholder='e.g. 1234567890'
-                        value={contactno}
-                        onChange={this.changeHandler}
-                        type='text'
-                    />
+                    <input name='contactno' placeholder='e.g. 1234567890'
+                      value={contactno} onChange={this.changeHandler} type='text' />
                     <br/>
                     <br/>
-                    <input
-                      type='file'
-                      id='image'
-                      name='image'
-                      accept='image/*'
-                      onChange={this.handleImageUpload}
-                      value={this.state.image}
-                      />
+                    <input type='file' id='image' name='image'
+                    accept='image/*' onChange={this.updateSelection}/>
 
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        position: "absolute"
-                      }}
-                      alt='upload image'
-                    />
+
                     <div> {this.state.image} </div>
                   <br/>
 
-                    <input
-                        name='button'
-                        type='submit'
-                        />
+                    <input name='button' type='submit' />
                     <br/>
                     <br/>
 
@@ -240,4 +186,21 @@ name: '',
             rating: '',
             place: '',
             contactno: ''
+_
+
+    console.log(event);
+      // this.setState({image : event.target.file})
+
+      let fd= new FormData();
+      console.log(this.state.image)
+      fd.append('files',this.state.image,this.state.image.originalname)
+      let statebody = Object.assign({},this.state,{image:null})
+      fd.append('state',JSON.stringify(statebody))
+      console.log("fd "+ fd);
+
+      axios.post('http://localhost:3000/home/sell/insert/food/image',fd)
+          .then((res)=>{ console.log("Image uploaded " + res)})
+          .catch((e)=>{
+          console.log(e)
+      })
 */
