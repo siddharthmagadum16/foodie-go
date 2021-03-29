@@ -36,15 +36,16 @@ class App extends React.Component{
   componentDidMount(){
     const Loggedin=window.localStorage.getItem("authorised");
     if(Loggedin!==undefined){
-      this.setState({authorised:parseInt(Loggedin)})
+      this.setState({authorised:parseInt(Loggedin),username: window.localStorage.getItem("username")})
     }else{
-      this.setState({authorised:0})
+      this.setState({authorised:0,username:""})
       window.localStorage.setItem("authorised","0");
     }
   }
 
   componentDidUpdate(){
     window.localStorage.setItem("authorised",this.state.authorised);
+    window.localStorage.setItem("username",this.state.username);
   }
 
   render(){

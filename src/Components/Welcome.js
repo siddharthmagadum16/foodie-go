@@ -26,25 +26,10 @@ export class Welcome extends React.Component {
         }
 
 
-        // this.handleImageUpload1=(event)=>{
-        //     console.log("hello!")
-        //     if (event.target.files && event.target.files[0]) {
-
-        //         let img = event.target.files[0];
-        //         console.log(img)
-        //         let encodedImage= Buffer.from(img).toString('base64')
-        //         console.log(encodedImage)
-        //         this.setState({
-        //           image: encodedImage
-        //         },()=>{
-        //             console.log(this.state.image)
-        //         });
-        //     }
-        // }
-        this.updateSelection=(e)=>{
+        this.updateSelection1=(e)=>{
             this.setState({image: e.target.files[0]});
         }
-        
+
         this.uploadFile = ()=>{
             let t0,t1;
             t0= performance.now()
@@ -59,7 +44,6 @@ export class Welcome extends React.Component {
             t1= performance.now()
             console.log("uploading total time: "+ t1-t0)
         }
-
     }
 
     render() {
@@ -82,7 +66,7 @@ export class Welcome extends React.Component {
                     id='image'
                     name='image'
                     accept='image/*'
-                    onChange={this.updateSelection}
+                    onChange={this.updateSelection1}
                 />
 
                 <input type='button' onClick={this.uploadFile} value='upload now' />
