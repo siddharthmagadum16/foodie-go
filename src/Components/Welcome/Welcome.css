@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+.first{
+    position: relative;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-shadow: 74px solid black;
+}
+.slogan{
+
+
+    position: absolute;
+    display: inline-block;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,20%);
+    font-family: 'Literata', serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 7vw;
+    color: rgb(7, 241, 163);
+    /* text-shadow: -.0001px -.0001px 0 #000, .0001px -.0001px 0 #000, -.0001px .1px 0 #000, .0001px .0001px 0 #000; */
+    line-height: 6vw;
+    text-shadow: 5px 5px 5px rgb(24, 29, 22), -1px -1px 6px rgb(28, 31, 3);
+    /* font-weight: bold; */
+
+    z-index: 32;
+}
+
+.welcomeImage {
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+
+}
+
+.secsub{
+    margin-top: 2rem;
+    font-size: 4vw;
+    font-family: 'Rubik', sans-serif;
+}
+
+.two-cards{
+    display: flex;
+    justify-content: center;
+}
+
+
+.second{
+    background-color:white;
+    /* border: 2px solid red; */
+}
+
+.card{
+    justify-content:center;
+    width: 25vw;
+    margin: 2vw 7vw 2vw 7vw;
+    height: auto;
+    box-shadow: 0px 0px 30px 3px rgb(29, 4, 4);
+
+}
+
+
+.cardbody1{
+    background-color: rgb(255, 197, 206);
+}
+
+.cardbody2{
+    background-color: rgb(157, 233, 233);
+}
+
+.cardtitle{
+    display: table-cell;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 3vw;
+    height: 18vw;
+    padding: 0 2vw 0  2vw;
+    vertical-align: middle;
+
+}
+
+.how-it-works{
+    font-size: 3vw;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+
+}
+
+.third{
+    background-color: black;
+}
+
+.container{
+    background-color: black;
+    /* height: 70vh;
+    width: 50vw; */
+}
+.carousel{
+    height: 35vw;
+    /* min-height: 50vh; */
+    /* height: o; */
+}
+.carousel-item{
+    height: 35vw;
+    /* min-height: 50vh; */
+}
+.carousel-item img{
+    align-self: center;
+    width: auto;
+    height: 25vw ;
+}
+.carousel-caption{
+    /* height: 10vw; */
+    /* size: 30vw; */
+    font-size: 2vw;
+}
+
+
+@media all and (max-width: 600px){
+    .third{
+        height: 90%;
+    }
+    .carousel{
+        /* height: 90%; */
+    }
+    .carousel-item img{
+        width: 100%;
+        height: auto;
+    }
+    .carousel-caption{
+        /* margin-top: 4vw; */
+    }
+}

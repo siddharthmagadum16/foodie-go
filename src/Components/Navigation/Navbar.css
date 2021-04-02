@@ -11,9 +11,8 @@ nav{
     flex-wrap: wrap;
     flex-direction: column;
     background: black;
-	height: 60px;
+	height: 65px;
     z-index: 1;
-
 }
 
 nav ul{
@@ -29,18 +28,21 @@ nav ul{
 nav ul li a:hover{
     text-decoration: none;
 }
-nav ul li.name{
-    display: flex;
-    flex:1;
-	font-size: 1.6rem;
-}
 
 
 nav ul li{
     padding: 15px 0;
-    padding: 1.3rem 1rem 0rem 1rem;
+    padding: 1.13rem 1rem 0rem 1rem;
     cursor: pointer;
 }
+
+nav ul li.name{
+    display: flex;
+    flex:1;
+    font-size: 1.6rem;
+    padding: 1rem 1rem 1rem 1rem
+}
+
 nav  ul li.items{
     position: relative;
     width: auto;
@@ -102,12 +104,12 @@ nav ul li.btn.hide i:before{
 
 /* this is working!fine\/ */
 /* comment this whole block off if you aren't able ot scroll*/
-.sticky {
+/* .sticky { */
 	/* position : absolute; */
     /* position: fixed; */
     /* height: 1rem; */
     /* width: 100%;
     top: 0; */
-}
+/* } */
 
 

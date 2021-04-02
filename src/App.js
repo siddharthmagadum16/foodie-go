@@ -10,7 +10,7 @@ import SignIn from './Components/Authentication/SignIn';
 import NotFound from './Components/NotFound';
 import BuyFood from './Components/Home/Home-components/Buy';
 import SellFood from './Components/Home/Home-components/Sell';
-import Welcome from './Components/Welcome';
+import Welcome from './Components/Welcome/Welcome';
 // let loggedin=0;
 class App extends React.Component{
   constructor(){
@@ -61,7 +61,7 @@ class App extends React.Component{
           {
             (this.state.authorised===1)?(
               <Switch>
-              <Route exact default path='/' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }  />
+              <Route exact path='/' component={Welcome} />
               <Route exact path='/about' component={About} />
               <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
               <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
@@ -74,7 +74,7 @@ class App extends React.Component{
                 <Route exact path='/about' component={About} />
                 <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
                 <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
-                <Route exact path='/getimage' component={Welcome} />
+                <Route exact path='/' component={Welcome} />
                 <Route exact path='*' component={NotFound} />
               </Switch>
               )

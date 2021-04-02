@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom';
 import './Buy.css'
 
 export class BuyFood extends React.Component {
@@ -9,41 +10,40 @@ export class BuyFood extends React.Component {
             list:[]
         }
         // this.getFoodList=this.getFoodList.bind(this)
-        this.makeList=(each)=>{
-            return( <li key={each.num}
-                        style={{"listStyleType":"none"}}
-                        className='foodcard'
-                    >
-                        <ul
-                        // onClick={()=>selectFood(each[0])}
-                        style={{"listStyleType":"none"}}>
-                            <li>{each[2]}       </li>
-                            <li>{each[3]}       </li>
-                            <li>{each[4]}       </li>
-                            <li>{each[5]}       </li>
-                        </ul>
-                </li>
-            )
-        }
+        this.makeList = (each) => {
+            console.log("each "+ each)
+            return (
+            <li key={each.num} style={{ listStyleType: "none" }} onClick={()=> this.BuyItem(each)} className="foodcard">
+                <ul style={{ listStyleType: "none"}} >
+                    <li key="1"><img height='200' width='200' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" /></li>
+                    <li key="2">{each[3]} </li>
+                    <li key="3">{"₹ "+ each[4]}</li>
+                    <li key="6">Contact details:</li>
+                    <li key="4">{each[2]}</li>
+                    <li key="5">{each[6]}</li>
+                </ul>
+            </li>
+            );
+        };
 
         this.getFoodList=()=>{
             axios.get('http://localhost:3000/home/buy')
             .then(res=>{
                 console.log(res.data);
                 console.log(Object.values(res.data));
-                // console.log(class(r));
+                if(res.data.length===0){
+                    console.log("Woops! All the foodies are out of stock");
+                    this.setState({list: "Woops! All the foodies are out of stock"})
+                }else{
+                    var user_food_list= res.data.map(Object.values)
+                    user_food_list= user_food_list.map(this.makeList)
+                    user_food_list= <ul className="cardsgrid">{user_food_list}</ul>
 
-                console.log(typeof(res.data));
-                this.setState({list: res.data.map((value)=>Object.values(value))})
-                this.setState({list: this.state.list.map(this.makeList)})
-                this.setState({list: <ul className='cardsgrid'
-                >{this.state.list}</ul>})
+                    this.setState({list: user_food_list})
+                }
             })
             .catch(err=>console.log("Error while fetching food list \n"+err))
         }
-
-        // this.selectFood=(foodid)=>{
-        // }
     }
 
     componentDidMount=()=>{
@@ -51,17 +51,14 @@ export class BuyFood extends React.Component {
     }
 
     render() {
-
-
         return (
             <Fragment>
-                <div classname='bgimg'>
+                <div className=''>
                     {this.state.list}
                 </div>
             </Fragment>
         )
-
     }
 }
 
-export default BuyFood
+export default BuyFood;

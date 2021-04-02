@@ -1,6 +1,5 @@
 import React,{Fragment} from 'react';
 import axios from 'axios'
-
 export class Register extends React.Component {
 
     constructor(props) {
@@ -19,7 +18,7 @@ export class Register extends React.Component {
                 if(res===1){
                     console.log("registered")
                     console.log(props.changeAuth())
-
+                    window.location.href="/home"
                 } else console.log(`unable to register`)
             })
             .catch(err=>console.log(err))
@@ -43,7 +42,7 @@ export class Register extends React.Component {
             {/* <div> */}
                 <label>Email        :</label>
                 <input
-                    name='Username'
+                    name='username'
                     placeholder='Enter you e-mail'
                     value={username}
                     onChange={this.changeHandler}
@@ -53,7 +52,7 @@ export class Register extends React.Component {
                 <br/>
                 <label>Password       :</label>
                 <input
-                    name='Password'
+                    name='password'
                     placeholder='Enter you Password'
                     value={password}
                     onChange={this.changeHandler}

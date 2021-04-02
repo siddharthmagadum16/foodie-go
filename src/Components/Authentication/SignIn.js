@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-// import {NavLink} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import axios from 'axios'
 import './SignIn.css'
 
@@ -24,7 +24,9 @@ export class Signin extends React.Component {
                     // console.log("signed in")
                     // props.setState({username:this .state.username})
                     // console.log(props.changeAuth(this.state.username))
-                    props.changeAuth(this.state.username)
+                    props.changeAuth(this.state.username);
+                    window.location.href="/home"
+
                 } else{
                     this.setState({signin_status:'Invalid email or password'})
                     console.log(`unable to signin`)

@@ -28,9 +28,9 @@ export class SellFood extends React.Component {
 
         <li key={each.num} style={{ listStyleType: "none" }} className="foodcard">
           <ul style={{ listStyleType: "none"}}>
-            <li key="11"><img height='200' width='200' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" /></li>
-            <li key="2">{each[4]} </li>
-            <li key="3">{each[5]} </li>
+            <li key="1"><img height='200' width='200' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" /></li>
+            <li key="2">{each[3]} </li>
+            <li key="3">{"₹ "+ each[4]} </li>
           </ul>
           <button onClick={()=>this.deleteFood(each[1],props.username)} >Remove</button>
         </li>
@@ -54,7 +54,6 @@ export class SellFood extends React.Component {
             var user_food_list= res.data.map(Object.values)
             user_food_list= user_food_list.map(this.makeList)
             user_food_list= <ul className="cardsgrid">{user_food_list}</ul>
-
             this.setState({list: user_food_list})
 
           }
