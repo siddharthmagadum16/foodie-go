@@ -6,17 +6,13 @@ import {NavLink} from "react-router-dom";
 // import SellFood from './Sell';
 
 class Home extends React.Component{
-    // constructor(props){
-    //     super(props);
 
-    // }
 
     render(){
 
         return(
             <Fragment>
                     <div className='container'>
-                        <p className='heading'>Buy and Sell</p>
                         <div className="grid ">
                             <div className='first'>
                             <NavLink  exact to="/home/buy"><strong>Buy some foodies</strong></NavLink>

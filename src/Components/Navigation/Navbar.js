@@ -1,10 +1,5 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-// import About from "./About";
-// import 'react-bootstrap'
-// import 'bootstrap'
-// import 'jquery'
-// import 'bootstrap/dist/js/popper.min.js';
 import './Navbar.css'
 
 
@@ -29,9 +24,6 @@ const Navbar = ({authorised}) => {
                 <NavLink className=" " exact to="/home">Home</NavLink>
               </li>
               <li className="items">
-                <NavLink className="" exact to="/about">  About</NavLink>
-              </li>
-              <li className="items">
                 <NavLink className="" exact to="/signin" onClick={SignOut}>
                   Sign Out
                 </NavLink>
@@ -41,9 +33,6 @@ const Navbar = ({authorised}) => {
             <ul className=" ">
              <li className="name">
                 <NavLink className=" " exact to="/">Foodie-go</NavLink>
-              </li>
-              <li className="items">
-                <NavLink className="" exact to="/about">About</NavLink>
               </li>
               <li className="items">
                 <NavLink className="" exact to="/signin">SignIn</NavLink>

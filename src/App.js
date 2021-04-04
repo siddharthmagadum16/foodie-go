@@ -3,15 +3,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Components/Navigation/Navbar'
 import Home from './Components/Home/Home';
-import About from './Components/About/About';
 import Register from './Components/Authentication/Register';
 import SignIn from './Components/Authentication/SignIn';
-// import SignOut from './Components/SignOut';
 import NotFound from './Components/NotFound';
 import BuyFood from './Components/Home/Home-components/Buy';
 import SellFood from './Components/Home/Home-components/Sell';
 import Welcome from './Components/Welcome/Welcome';
-// let loggedin=0;
 class App extends React.Component{
   constructor(){
     super();
@@ -62,7 +59,6 @@ class App extends React.Component{
             (this.state.authorised===1)?(
               <Switch>
               <Route exact path='/' component={Welcome} />
-              <Route exact path='/about' component={About} />
               <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
               <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
                 <Route exact path='/home' component={()=> <Home />} />
@@ -71,7 +67,6 @@ class App extends React.Component{
             </Switch>
             ):(
               <Switch>
-                <Route exact path='/about' component={About} />
                 <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
                 <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
                 <Route exact path='/' component={Welcome} />

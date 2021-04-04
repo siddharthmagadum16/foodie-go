@@ -5,13 +5,7 @@ import cookingfood from './cooking-food.png'
 import cookmobile from './cook-mobile.jpg'
 import fooddeliver from './food-deliver.jpg'
 import foodorder from './food-order.jpg'
-
-// import {Image} from '@material-ui/core'
 import './Welcome.css';
-// const Card = require('@material-ui/core/Card');
-import Card from '@material-ui/core/Card';
-
-// const {Image} = require('material-ui-image')
 class Welcome extends React.Component {
 
     constructor(props) {
@@ -87,21 +81,6 @@ class Welcome extends React.Component {
                   </div>
                 </div>
 
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
             </div>
         )
     }
