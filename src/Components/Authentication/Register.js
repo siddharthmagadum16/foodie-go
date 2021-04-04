@@ -11,7 +11,7 @@ export class Register extends React.Component {
 
         this.onSubmitRegister=(event)=>{
             event.preventDefault();
-            axios.post('http://localhost:3000/register',this.state)
+            axios.post(process.env.BACKEND_URL+'/register',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 console.log(res)

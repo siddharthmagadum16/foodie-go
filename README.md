@@ -1,11 +1,11 @@
 # foodie-go
+
 # Getting Started with Create React App
 
 foodie-go is a food networking website where people from locality either buy the foodies or sell to make their foodies availaible online and to advertise or market, thus benifiting their cooking skills.
 This web app is built using MERN stack.
 This repository is the frontend part of foodie-go web app.
 For the backend part, head on to [foodie-go-api](https://github.com/siddharthmagadum16/foodie-go-api) repository.
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -16,7 +16,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [https://foodie-go-api-heroku.herokuapp.com/](https://foodie-go-api-heroku.herokuapp.com/) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

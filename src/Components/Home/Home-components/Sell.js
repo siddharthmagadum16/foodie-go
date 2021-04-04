@@ -15,7 +15,7 @@ export class SellFood extends React.Component {
     };
     // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
-        let userurl = 'http://localhost:3000/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        let userurl = process.env.BACKEND_URL+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
         .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -41,7 +41,7 @@ export class SellFood extends React.Component {
     this.getFoodList = () => {
         console.log('getfood list clg')
 
-          let userurl = 'http://localhost:3000/home/sell/'.concat(props.username)
+          let userurl = process.env.BACKEND_URL+'/home/sell/'.concat(props.username)
         console.log("USER url "+userurl)
         axios
         .post(userurl)
@@ -107,7 +107,7 @@ export class SellFood extends React.Component {
         console.log(`fooddocument : ${this.state}`)
         axios({
           method: 'POST',
-          url: 'http://localhost:3000/home/sell/insert/food',
+          url: process.env.BACKEND_URL+'/home/sell/insert/food',
           data: fd,
           headers: { 'Content-Type': 'multipart/form-data; boundary=${form._boundary}' },
         })

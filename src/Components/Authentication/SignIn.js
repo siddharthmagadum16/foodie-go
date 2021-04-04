@@ -16,7 +16,7 @@ export class Signin extends React.Component {
 
         this.onSubmitSignin=(event)=>{
             event.preventDefault();
-            axios.post('http://localhost:3000/signin',this.state)
+            axios.post(process.env.BACKEND_URL+'/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 // console.log(res)
@@ -84,15 +84,3 @@ export class Signin extends React.Component {
 }
 
 export default Signin;
-
-/*
-
- let authorised=0;
-    fetch('http://http://localhost:3000/signin')
-    .then(res=>res.json())
-    .then(res=> authorised=res)
-    .catch(err=>console.log(`Error occurred ${err}`))
-
-    this.setState({ authorised:authorised})
-
-*/
