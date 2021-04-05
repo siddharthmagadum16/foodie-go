@@ -18,13 +18,13 @@ const Navbar = ({authorised}) => {
             <ul className="">
 
               <li className="name">
-                <NavLink className="name-link" exact to="/"> <div>Foodie-go</div></NavLink>
+                <NavLink className="name-link" exact to="/">Foodie-go</NavLink>
               </li>
               <li className="items">
-                <NavLink className=" " exact to="/home">Home</NavLink>
+                <NavLink className="name-link" exact to="/home">Home</NavLink>
               </li>
               <li className="items">
-                <NavLink className="" exact to="/signin" onClick={SignOut}>
+                <NavLink className="name-link" exact to="/signin" onClick={SignOut}>
                   Sign Out
                 </NavLink>
               </li>
@@ -32,13 +32,13 @@ const Navbar = ({authorised}) => {
             ):(
             <ul className=" ">
              <li className="name">
-                <NavLink className=" " exact to="/">Foodie-go</NavLink>
+                <NavLink className="name-link" exact to="/">Foodie-go</NavLink>
               </li>
               <li className="items">
-                <NavLink className="" exact to="/signin">SignIn</NavLink>
+                <NavLink className="name-link" exact to="/signin">SignIn</NavLink>
               </li>
               <li className="items">
-                <NavLink className="" exact to="/register">Register</NavLink>
+                <NavLink className="name-link" exact to="/register">Register</NavLink>
               </li>
             </ul>
 

@@ -1,5 +1,6 @@
 import React,{Fragment} from 'react';
 import axios from 'axios'
+import './SignIn.css';
 export class Register extends React.Component {
 
     constructor(props) {
@@ -11,7 +12,7 @@ export class Register extends React.Component {
 
         this.onSubmitRegister=(event)=>{
             event.preventDefault();
-            axios.post(process.env.BACKEND_URL+'/register',this.state)
+            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/register',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 console.log(res)
@@ -34,15 +35,17 @@ export class Register extends React.Component {
     render(){
         const { username, password}=this.state
         return (
-            <Fragment>
+            <Fragment className="fragment">
+            <div className='signincard'>
             <h1>Register</h1>
             <br/>
             <form  onSubmit={this.onSubmitRegister} method='POST' >
-            {/* <div> */}
                 <label>Email        :</label>
                 <input
+                    required
+                    className='form-control'
                     name='username'
-                    placeholder='Enter you e-mail'
+                    placeholder='Enter e-mail'
                     value={username}
                     onChange={this.changeHandler}
                     type='text'
@@ -51,20 +54,21 @@ export class Register extends React.Component {
                 <br/>
                 <label>Password       :</label>
                 <input
+                    required
+                    className='form-control'
                     name='password'
-                    placeholder='Enter you Password'
+                    placeholder='Enter password'
                     value={password}
                     onChange={this.changeHandler}
                     type='password'
                 />
                 <br/>
                 <br/>
-                <input
-                    name='button'
-                    type='submit'
-                />
+                <input name='button' class="btn btn-dark" type="submit" value="Submit"/>
+
 
             </form>
+            </div>
             </Fragment>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import "./Buy.css";
 
 export class BuyFood extends React.Component {
@@ -40,7 +39,7 @@ export class BuyFood extends React.Component {
 
     this.getFoodList = () => {
       axios
-        .get(process.env.BACKEND_URL+"/home/buy")
+        .get("https://foodie-go-api-heroku.herokuapp.com" + "/home/buy")
         .then((res) => {
           console.log(res.data);
           console.log(Object.values(res.data));

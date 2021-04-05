@@ -15,7 +15,7 @@ export class SellFood extends React.Component {
     };
     // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
-        let userurl = process.env.BACKEND_URL+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
         .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -109,7 +109,7 @@ export class SellFood extends React.Component {
           method: 'POST',
           url: process.env.BACKEND_URL+'/home/sell/insert/food',
           data: fd,
-          headers: { 'Content-Type': 'multipart/form-data; boundary=${form._boundary}' },
+          headers: { 'Content-Type': 'multipart/form-data' },
         })
         .then(res=>parseInt(res.data))
         .then(res=>{

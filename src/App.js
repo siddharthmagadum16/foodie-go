@@ -53,7 +53,7 @@ class App extends React.Component{
         <div className='header'  >
             <Navbar authorised={this.state.authorised}/>
         </div>
-        <div className='body'>
+        <div className='app-body'>
 
           {
             (this.state.authorised===1)?(

@@ -8,10 +8,6 @@ import foodorder from './food-order.jpg'
 import './Welcome.css';
 class Welcome extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
 
@@ -42,7 +38,6 @@ class Welcome extends React.Component {
                               </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div className='third'>
@@ -80,7 +75,7 @@ class Welcome extends React.Component {
                     </div>
                   </div>
                 </div>
-
+               
             </div>
         )
     }

@@ -36,7 +36,8 @@
 }
 
 .secsub{
-    margin-top: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
     font-size: 4vw;
     font-family: 'Rubik', sans-serif;
 }
@@ -84,24 +85,24 @@
     font-size: 3vw;
     font-family: 'Rubik', sans-serif;
     color: white;
-
+    width: 100%;
 }
 
 .third{
     background-color: black;
+    display: flex;
+    flex-wrap:wrap;
     justify-content: center;
+    height: cover;
+
 }
 
 .container{
-    margin-left: 50;
     background-color: black;
-    /* height: 70vh;
-    width: 50vw; */
 }
 .carousel{
     height: 35vw;
-    /* min-height: 50vh; */
-    /* height: o; */
+
 }
 .carousel-item{
     height: 35vw;
@@ -113,24 +114,45 @@
     height: 25vw ;
 }
 .carousel-caption{
+    position: relative;
+    left:1%;
+    margin-top: 10px;
     /* height: 10vw; */
     /* size: 30vw; */
     font-size: 2vw;
 }
 
+.two-cards{
+    margin-bottom: 2rem;
+}
 
 @media all and (max-width: 600px){
-    .third{
-        height: 90%;
-    }
+
     .carousel{
-        /* height: 90%; */
+        height:23rem;
+        height:-23vw;
+    }
+    .carousel-item{
+        height:auto;
     }
     .carousel-item img{
-        width: 100%;
+        width: 80%;
         height: auto;
     }
-    .carousel-caption{
-        /* margin-top: 4vw; */
+
+    .secsub{
+        margin-top: 2rem;
+    }
+}
+
+@media all and (max-width: 450px){
+    .carousel{
+        height:20rem;
+    }
+}
+
+@media all and (max-width: 370px){
+    .carousel{
+        height:17rem;
     }
 }
