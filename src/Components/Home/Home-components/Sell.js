@@ -41,7 +41,7 @@ export class SellFood extends React.Component {
     this.getFoodList = () => {
         console.log('getfood list clg')
 
-          let userurl = process.env.BACKEND_URL+'/home/sell/'.concat(props.username)
+          let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/'.concat(props.username)
         console.log("USER url "+userurl)
         axios
         .post(userurl)
@@ -107,7 +107,7 @@ export class SellFood extends React.Component {
         console.log(`fooddocument : ${this.state}`)
         axios({
           method: 'POST',
-          url: process.env.BACKEND_URL+'/home/sell/insert/food',
+          url: +'/home/sell/insert/food',
           data: fd,
           headers: { 'Content-Type': 'multipart/form-data' },
         })
