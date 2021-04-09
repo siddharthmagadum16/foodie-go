@@ -7,22 +7,32 @@ export class Register extends React.Component {
         super(props)
         this.state = {
             username:'',
-            password:''
+            password:'',
+            code: '',
+            send: 'Send verification code',
+            codestatus: ''
         }
 
         this.onSubmitRegister=(event)=>{
 
             event.preventDefault();
             // axios.post('https://foodie-go-api-heroku.herokuapp.com'+'auth/register',this.state)
-            axios.post('http://localhost:4000'+'/auth/register',this.state)
+            axios.post('http://localhost:4000/auth/register',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 console.log(res)
                 if(res===1){
                     console.log("registered")
                     console.log(props.changeAuth(this.state.username))
-                    window.location.href="/verify-email"
-                } else console.log(`unable to register`)
+
+                    window.location.href="/home"
+                }
+                else if(res===2){
+                    this.setState({codestatus:"The code entered in incorrect"})
+                    console.log("The code entered in incorrect")
+                    this.setState({send: "Re-send verification code"})
+                }
+                else console.log(`unable to register`)
             })
             .catch(err=>console.log(err))
         }
@@ -39,12 +49,27 @@ export class Register extends React.Component {
         }
 
         this.sendVerificationCode=(event)=>{
-            axios.post('http://localhost:4000'+'/auth/send-code',this.state)
-            // .then(res)
+            event.preventDefault();
+            axios.post('http://localhost:4000/auth/send-code',this.state)
+            .then(res=>{
+                if(parseInt(res.data)===1){
+                    console.log(`code sent successfully`)
+                }
+                else if(parseInt(res.data)===2){
+                    console.log(`user already registered`)
+                    this.setState({codestatus:"You already have Foodie-go account"})
+                }
+                else if(parseInt(res.data)===3){
+                    console.log(`invalid email`)
+                    this.setState({codestatus:"Invalid e-mail"})
+                }
+                else console.log(`error sending code`)
+            })
         }
     }
 
     render(){
+
         const { username, password}=this.state
         return (
             <div className="signin-body">
@@ -76,9 +101,11 @@ export class Register extends React.Component {
                 />
                 <br/>
                 <br/>
-                <input name='button' class="btn btn-primary" type="button" value="send verification code" onClick={()=>this.sendVerificationCode}/>
-                <input name='code' type='text' className='form-control' />
-                <input name='button' class="btn btn-dark" type="submit" value="Submit"/>
+                <input name='button' className="btn btn-primary" type="button" value={this.state.send} onClick={this.sendVerificationCode}/>
+                <div>{this.state.codestatus}</div>
+                <input placeholder='enter verification code' required onChange={this.changeHandler} name='code' type='text' className='form-control' />
+
+                <input name='button' className="btn btn-dark" type="submit" value="Register"/>
 
 
             </form>

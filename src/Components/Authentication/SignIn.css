@@ -44,6 +44,7 @@ body {
     margin: 4vw 8vw;
     max-width: 28rem;
     height: 65vh;
+    height: fit-content;
     box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, rgba(0, 0, 0, 0.8) 5px 5px 9px 5px, inset 40px 40px 100px rgba(235, 72, 72, 0.774), inset -40px -40px 100px rgba(230, 66, 66, 0.74);
     /* box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, inset rgba(249, 253, 4, 0.425) 0px -10px 30px -5px; */
 }

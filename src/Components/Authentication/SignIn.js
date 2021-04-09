@@ -79,7 +79,7 @@ export class Signin extends React.Component {
                     />
                     <br/>
 
-                    <input name='button' class="btn btn-dark" type="submit" value="Submit"/>
+                    <input name='button' className="btn btn-dark" type="submit" value="Submit"/>
 
                     <br/>
                     <br/>

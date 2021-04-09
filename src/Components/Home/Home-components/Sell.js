@@ -45,13 +45,12 @@ export class SellFood extends React.Component {
 
           // let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/'.concat(props.username)
           let userurl = 'http://localhost:4000'+'/home/sell/'.concat(props.username)
-        console.log("USER url "+userurl)
         axios
         .post(userurl)
         .then((res) => {
 
           if(res.data.length===0){
-          console.log(`seller's list length is ${this.state.list.length}`)
+          // console.log(`seller's list length is ${this.state.list.length}`)
                 this.setState({list: "You aren't selling any foodies yet."})
           }else{
             var user_food_list= res.data.map(Object.values)
@@ -102,6 +101,7 @@ export class SellFood extends React.Component {
         fd.append('place',this.state.place)
         fd.append('username',this.state.username)
         fd.append('contactno',this.state.contactno)
+
         console.log(fd.data)
         t1= performance.now()
         console.log("uploading total time: "+ t1-t0)
@@ -110,7 +110,7 @@ export class SellFood extends React.Component {
         console.log(`fooddocument : ${this.state}`)
         axios({
           method: 'POST',
-          url: +'/home/sell/insert/food',
+          url: 'http://localhost:4000/home/sell/insert/food',
           data: fd,
           headers: { 'Content-Type': 'multipart/form-data' },
         })
@@ -148,30 +148,30 @@ export class SellFood extends React.Component {
 
                 <form  onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                     <label>Food name         :</label>
-                    <input name='foodname' placeholder='e.g. Veg fried rice'
+                    <input required name='foodname' placeholder='e.g. Veg fried rice'
                     value={foodname} onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
                     <label>Price       :</label>
-                    <input name='price' placeholder='e.g. Rs 100' value={price}
+                    <input required name='price' placeholder='e.g. Rs 100' value={price}
                     onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
 
                     <label>Place         :</label>
-                    <input name='place' placeholder='e.g. MG Road'
+                    <input required name='place' placeholder='e.g. MG Road'
                      value={place} onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
                     <label>Contact Number        :</label>
-                    <input name='contactno' placeholder='e.g. 1234567890'
+                    <input required name='contactno' placeholder='e.g. 1234567890'
                       value={contactno} onChange={this.changeHandler} type='text' />
                     <br/>
                     <br/>
-                    <input type='file' id='image' name='image'
+                    <input required type='file' id='image' name='image'
                     accept='image/*' onChange={this.updateSelection}/>
 
 

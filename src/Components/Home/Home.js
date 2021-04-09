@@ -30,7 +30,7 @@ class Home extends React.Component{
                         <div className='home-sell'>
                             <div></div>
                             <img id='sell-img' src={sellfood} alt='buy-food'/>
-                            <div>kw
+                            <div>
                                 <strong>Sell some foodies</strong>
                                 <div>Where homecooks can sell foodies</div>
                             </div>
