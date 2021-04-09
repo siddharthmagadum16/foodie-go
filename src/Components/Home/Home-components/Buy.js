@@ -6,7 +6,7 @@ export class BuyFood extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
+      list: ['Loading ...'],
     };
     // this.getFoodList=this.getFoodList.bind(this)
     this.makeList = (each) => {
@@ -39,7 +39,8 @@ export class BuyFood extends React.Component {
 
     this.getFoodList = () => {
       axios
-        .get("https://foodie-go-api-heroku.herokuapp.com" + "/home/buy")
+        // .get("https://foodie-go-api-heroku.herokuapp.com" + "/home/buy")
+        .get('http://localhost:4000' + "/home/buy")
         .then((res) => {
           console.log(res.data);
           console.log(Object.values(res.data));

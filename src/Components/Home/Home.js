@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import './home.css'
-// import { Nav } from 'react-boot  strap';
 import {NavLink} from "react-router-dom";
-// import BuyFood from './Buy';
-// import SellFood from './Sell';
+import buyfood from './buy-food.jpg'
+import sellfood from './sell-food.jpg'
+import './Home.css';
 
 class Home extends React.Component{
 
@@ -12,20 +11,32 @@ class Home extends React.Component{
 
         return(
             <Fragment>
-                    <div className='container'>
-                        <div className="grid ">
-                            <div className='first'>
-                            <NavLink  exact to="/home/buy"><strong>Buy some foodies</strong></NavLink>
-                                <p>Where customers can buy foodies </p>
+                <div className="home">
+
+                    <div></div>
+                    <NavLink  exact to="/home/buy">
+                        <div className='home-buy'>
+                            <div>
+                                <strong>Buy some foodies</strong>
+                                <div>Where customers can buy foodies </div>
                             </div>
-                            <div className='second'>
-                            <NavLink  exact to="home/sell"><strong>Sell some foodies</strong></NavLink>
-                                <p>Where homecooks can sell foodies</p>
-                            </div>
-                            <div className='third'>
-                            {/* <NavLink  exact to="home/getimage"><strong>wanna see image?</strong></NavLink> */}
+                            <img id='buy-img'src={buyfood} alt='buy-food'/>
+                            <div></div>
+                        </div>
+                    </NavLink>
+
+
+                    <NavLink  exact to="home/sell">
+                        <div className='home-sell'>
+                            <div></div>
+                            <img id='sell-img' src={sellfood} alt='buy-food'/>
+                            <div>kw
+                                <strong>Sell some foodies</strong>
+                                <div>Where homecooks can sell foodies</div>
                             </div>
                         </div>
+                    </NavLink>
+
                     </div>
             </Fragment>
         )

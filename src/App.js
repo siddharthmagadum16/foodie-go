@@ -9,22 +9,26 @@ import NotFound from './Components/NotFound';
 import BuyFood from './Components/Home/Home-components/Buy';
 import SellFood from './Components/Home/Home-components/Sell';
 import Welcome from './Components/Welcome/Welcome';
+import Verify from './Components/Authentication/Verify'
 class App extends React.Component{
   constructor(){
     super();
     this.state={
       authorised: 0,
-      username: ''
+      username: '',
+      verified: 0
     }
     this.changeAuth=this.changeAuth.bind(this)
   }
 
+  getAuthstatus=()=>{
+    return this.state.authorised
+  }
 
   changeAuth=(username)=>{
     this.setState({
       authorised: (this.state.authorised===1)?0:1,
       username: username
-      // username: username,
     },()=> console.log(`state changed to : ${this.state.authorised} username: ${this.state.username} `)
 
     )
@@ -56,19 +60,21 @@ class App extends React.Component{
         <div className='app-body'>
 
           {
-            (this.state.authorised===1)?(
+            (this.state.authorised===1 && this.state.verified===1)?(
               <Switch>
               <Route exact path='/' component={Welcome} />
-              <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
-              <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
+              {/* <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
+              <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } /> */}
                 <Route exact path='/home' component={()=> <Home />} />
                 <Route exact path='/home/buy' component={()=><BuyFood  />} />
                 <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
+                <Route exact path='*' component={NotFound} />
             </Switch>
             ):(
               <Switch>
                 <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
                 <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } />
+                <Route exact path='/verify-email' component={ ()=> <Verify changeAuth={this.changeAuth}/> } />
                 <Route exact path='/' component={Welcome} />
                 <Route exact path='*' component={NotFound} />
               </Switch>

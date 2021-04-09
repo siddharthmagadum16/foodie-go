@@ -12,18 +12,23 @@ html{
 
 }
 body {
-    background-image: url('./tiles.jpg') ;
     min-height: 100%;
     height:100%;
 
 }
 
-.fragment{
+.signin-body{
+    background-image: url('./auth-bg.jpg')  ;
+    background-size:cover;
     display:flex;
     justify-content:center;
+    height: 90vh;
+
 }
 
-.app-body{
+.appbody{
+    background-image: url('./auth-bg.jpg')  ;
+    background-size:cover;
     display:flex;
     justify-content:center;
 
@@ -36,8 +41,9 @@ body {
     border: .5vw solid rgba(165, 42, 42, 0.849);
     border-radius: 1rem;
     padding: 3vw;
-    margin: 3vw;
+    margin: 4vw 8vw;
     max-width: 28rem;
+    height: 65vh;
     box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, rgba(0, 0, 0, 0.8) 5px 5px 9px 5px, inset 40px 40px 100px rgba(235, 72, 72, 0.774), inset -40px -40px 100px rgba(230, 66, 66, 0.74);
     /* box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, inset rgba(249, 253, 4, 0.425) 0px -10px 30px -5px; */
 }

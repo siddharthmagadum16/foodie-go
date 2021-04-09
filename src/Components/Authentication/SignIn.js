@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import axios from 'axios'
 import './SignIn.css'
 
@@ -15,7 +15,8 @@ export class Signin extends React.Component {
 
         this.onSubmitSignin=(event)=>{
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/signin',this.state)
+            // axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
+            axios.post('http://localhost:4000'+'/auth/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 // console.log(res)
@@ -43,8 +44,10 @@ export class Signin extends React.Component {
     }
     render(){
         const { username, password}=this.state
+
+        // if(props)
         return (
-            <Fragment className="fragment">
+            <div className="signin-body">
             <div className='signincard'>
 
                 <h1>Sign In</h1>
@@ -76,16 +79,17 @@ export class Signin extends React.Component {
                     />
                     <br/>
 
-    <input name='button' class="btn btn-dark" type="submit" value="Submit"/>
+                    <input name='button' class="btn btn-dark" type="submit" value="Submit"/>
 
                     <br/>
                     <br/>
-                <h4>{this.state.signin_status}</h4>
+                    <h4>{this.state.signin_status}</h4>
                     <br/>
                     <br/>
                 </form>
             </div>
-            </Fragment>
+                <a style={{"position":"fixed","bottom":"20px","right":"10px",'font-size':'2px','color':'pink'}} href="https://www.freepik.com/vectors/background">bg source</a>
+            </div>
         )
     }
 }

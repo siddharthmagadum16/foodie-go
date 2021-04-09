@@ -5,7 +5,7 @@ export class SellFood extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        list: [],
+        list: ['Loading ...'],
             username: props.username,
             foodname: '',
             price: '',
@@ -15,7 +15,9 @@ export class SellFood extends React.Component {
     };
     // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
-        let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        let userurl;
+        // userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        userurl = 'http://localhost:4000'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
         .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -41,7 +43,8 @@ export class SellFood extends React.Component {
     this.getFoodList = () => {
         console.log('getfood list clg')
 
-          let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/'.concat(props.username)
+          // let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/'.concat(props.username)
+          let userurl = 'http://localhost:4000'+'/home/sell/'.concat(props.username)
         console.log("USER url "+userurl)
         axios
         .post(userurl)
