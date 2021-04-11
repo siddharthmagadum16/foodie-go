@@ -1,18 +1,29 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import './Sell.css'
+
+// const initialState={
+//   list: ['Loading ...'],
+//   username: props.username,
+//   foodname: '',
+//   price: '',
+//   place: '',
+//   contactno: '',
+//   image: null
+// }
 export class SellFood extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        list: ['Loading ...'],
-            username: props.username,
-            foodname: '',
-            price: '',
-            place: '',
-            contactno: '',
-            image: null
-    };
+      list: ['Loading ...'],
+      username: props.username,
+      foodname: '',
+      price: '',
+      place: '',
+      contactno: '',
+      image: null
+    }
+
     // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
         let userurl;
@@ -119,6 +130,13 @@ export class SellFood extends React.Component {
             console.log(res)
             if(res===1){
                 console.log("foodstuff successfully added")
+                this.setState({
+                  foodname: '',
+                  price: '',
+                  place: '',
+                  contactno: '',
+                  image: null
+                })
                 this.getFoodList()
                 // props.setState({username:this .state.username})
             } else{
@@ -147,35 +165,36 @@ export class SellFood extends React.Component {
                 <h1>Homecooks, do you want to sell food?</h1>
 
                 <form  onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
-                    <label>Food name         :</label>
-                    <input required name='foodname' placeholder='e.g. Veg fried rice'
+                    <label>Foodie-name         :</label>
+                    <input required name='foodname' placeholder=''
                     value={foodname} onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
                     <label>Price       :</label>
-                    <input required name='price' placeholder='e.g. Rs 100' value={price}
+                    <input required name='price' placeholder='' value={price}
                     onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
 
-                    <label>Place         :</label>
-                    <input required name='place' placeholder='e.g. MG Road'
+                    <label>Address      :</label>
+                    <input required name='place' placeholder=''
                      value={place} onChange={this.changeHandler} type='text'/>
 
                     <br/>
                     <br/>
                     <label>Contact Number        :</label>
-                    <input required name='contactno' placeholder='e.g. 1234567890'
-                      value={contactno} onChange={this.changeHandler} type='text' />
+                    <input required name='contactno' placeholder=''
+                      value={contactno} onChange={this.changeHandler} type='number' />
                     <br/>
                     <br/>
+                      <label>upload foodie image        :</label>
                     <input required type='file' id='image' name='image'
                     accept='image/*' onChange={this.updateSelection}/>
 
 
-                    <div> {this.state.username} </div>
+                    {/* <div> {this.state.username} </div> */}
                   <br/>
 
                     <input name='button' type='submit' />

@@ -24,14 +24,18 @@ export class Signin extends React.Component {
                     // console.log("signed in")
                     // props.setState({username:this .state.username})
                     // console.log(props.changeAuth(this.state.username))
-                    props.changeAuth(this.state.username);
                     window.location.href="/home"
-
+                    props.changeAuth(this.state.username);
+                    return 1
                 } else{
                     this.setState({signin_status:'Invalid email or password'})
                     console.log(`unable to signin`)
+                    return 0
                 }
             })
+            // .then(res=>{
+            //     if(res===1) window.location.href='/home'
+            // })
             .catch(err=>console.log(err))
         }
 

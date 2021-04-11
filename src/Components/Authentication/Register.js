@@ -36,12 +36,7 @@ export class Register extends React.Component {
             })
             .catch(err=>console.log(err))
         }
-        this.onSubmitR= (event)=>{
-            event.preventDefault();
-            console.log(props.changeAuth(this.state.username))
-            window.location.href='/verify-email'
-        }
-
+        
         this.changeHandler=(event)=>{
             this.setState({
             [event.target.name]: event.target.value

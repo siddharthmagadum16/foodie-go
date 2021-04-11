@@ -68,7 +68,7 @@ class App extends React.Component{
               {/* <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
               <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } /> */}
                 <Route exact path='/home' component={()=> <Home />} />
-                <Route exact path='/home/buy' component={()=><BuyFood  />} />
+                <Route exact path='/home/buy' component={()=><BuyFood username={this.state.username} />} />
                 <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
                 <Route exact path='*' component={NotFound} />
             </Switch>
