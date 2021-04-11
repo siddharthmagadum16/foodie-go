@@ -15,15 +15,12 @@ export class Signin extends React.Component {
 
         this.onSubmitSignin=(event)=>{
             event.preventDefault();
-            // axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
-            axios.post('http://localhost:4000'+'/auth/signin',this.state)
+            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
+            // axios.post('http://localhost:4000'+'/auth/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 // console.log(res)
                 if(res===1){
-                    // console.log("signed in")
-                    // props.setState({username:this .state.username})
-                    // console.log(props.changeAuth(this.state.username))
                     window.location.href="/home"
                     props.changeAuth(this.state.username);
                     return 1

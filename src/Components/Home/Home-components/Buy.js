@@ -67,8 +67,8 @@ export class BuyFood extends React.Component {
     this.getFoodList = () => {
 
       axios
-        // .get("https://foodie-go-api-heroku.herokuapp.com" + "/home/buy")
-        .get('http://localhost:4000/home/buy')
+        .get("https://foodie-go-api-heroku.herokuapp.com/home/buy")
+        // .get('http://localhost:4000/home/buy')
         .then((res) => {
           console.log(res.data);
           // console.log(Object.values(res.data));
@@ -129,7 +129,8 @@ export class BuyFood extends React.Component {
       console.log(props)
       if(Object.keys(userObj).length){
         let orderdata=[userObj,props.username,this.state.totalprice,this.state.address,this.state.contactno]
-        axios.post('http://localhost:4000/home/buy/send-order',orderdata)
+        axios.post('https://foodie-go-api-heroku.herokuapp.com/send-order',orderdata)
+        // axios.post('http://localhost:4000/home/buy/send-order',orderdata)
         .then(res=>{
           console.log(res)
           if(parseInt(res.data)===1){

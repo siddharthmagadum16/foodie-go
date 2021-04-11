@@ -27,8 +27,8 @@ export class SellFood extends React.Component {
     // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
         let userurl;
-        // userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
-        userurl = 'http://localhost:4000'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        // userurl = 'http://localhost:4000'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
         .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -54,8 +54,8 @@ export class SellFood extends React.Component {
     this.getFoodList = () => {
         console.log('getfood list clg')
 
-          // let userurl = 'https://foodie-go-api-heroku.herokuapp.com'+'/home/sell/'.concat(props.username)
-          let userurl = 'http://localhost:4000'+'/home/sell/'.concat(props.username)
+          let userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/'.concat(props.username)
+          // let userurl = 'http://localhost:4000'+'/home/sell/'.concat(props.username)
         axios
         .post(userurl)
         .then((res) => {
@@ -119,9 +119,12 @@ export class SellFood extends React.Component {
 
         console.log(this.state.username)
         console.log(`fooddocument : ${this.state}`)
+        // let url='http://localhost:4000/home/sell/insert/food'
+        let url='https://foodie-go-api-heroku.herokuapp.com/home/sell/insert/food'
+
         axios({
           method: 'POST',
-          url: 'http://localhost:4000/home/sell/insert/food',
+          url: url,
           data: fd,
           headers: { 'Content-Type': 'multipart/form-data' },
         })
