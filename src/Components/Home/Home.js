@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import {NavLink} from "react-router-dom";
+import './home.css';
 import buyfood from './buy-food.jpg'
 import sellfood from './sell-food.jpg'
-import './Home.css';
 // import ''
 
 class Home extends React.Component{
