@@ -16,7 +16,7 @@ export class Register extends React.Component {
         this.onSubmitRegister=(event)=>{
 
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'auth/register',this.state)
+            axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/register',this.state)
             // axios.post('http://localhost:4000/auth/register',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
@@ -45,7 +45,7 @@ export class Register extends React.Component {
 
         this.sendVerificationCode=(event)=>{
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'auth/send-code',this.state)
+            axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/send-code',this.state)
             // axios.post('http://localhost:4000/auth/send-code',this.state)
             .then(res=>{
                 if(parseInt(res.data)===1){

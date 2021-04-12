@@ -113,7 +113,6 @@ export class SellFood extends React.Component {
         fd.append('username',this.state.username)
         fd.append('contactno',this.state.contactno)
 
-        console.log(fd.data)
         t1= performance.now()
         console.log("uploading total time: "+ t1-t0)
 
