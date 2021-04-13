@@ -16,8 +16,8 @@ export class Register extends React.Component {
         this.onSubmitRegister=(event)=>{
 
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/register',this.state)
-            // axios.post('http://localhost:4000/auth/register',this.state)
+            // axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/register',this.state)
+            axios.post('http://localhost:4000/auth/register',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 console.log(res)
@@ -45,8 +45,8 @@ export class Register extends React.Component {
 
         this.sendVerificationCode=(event)=>{
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/send-code',this.state)
-            // axios.post('http://localhost:4000/auth/send-code',this.state)
+            // axios.post('https://foodie-go-api-heroku.herokuapp.com/auth/send-code',this.state)
+            axios.post('http://localhost:4000/auth/send-code',this.state)
             .then(res=>{
                 if(parseInt(res.data)===1){
                     console.log(`code sent successfully`)
@@ -73,7 +73,7 @@ export class Register extends React.Component {
             <h1>Register</h1>
             <br/>
             <form  onSubmit={this.onSubmitRegister} method='POST' >
-                <label>Email        :</label>
+                <label>Email </label>
                 <input
                     required
                     className='form-control'
@@ -84,8 +84,7 @@ export class Register extends React.Component {
                     type='text'
                     />
                 <br/>
-                <br/>
-                <label>Password       :</label>
+                <label>Password       </label>
                 <input
                     required
                     className='form-control'
@@ -96,12 +95,15 @@ export class Register extends React.Component {
                     type='password'
                 />
                 <br/>
-                <br/>
                 <input name='button' className="btn btn-primary" type="button" value={this.state.send} onClick={this.sendVerificationCode}/>
+                <br/>
+                <br/>
                 <div>{this.state.codestatus}</div>
+                <br/>
                 <input placeholder='enter verification code' required onChange={this.changeHandler} name='code' type='text' className='form-control' />
+                <br/>
 
-                <input name='button' className="btn btn-dark" type="submit" value="Register"/>
+                <input name='button'  className="btn btn-dark" type="submit" value="Register"/>
 
 
             </form>

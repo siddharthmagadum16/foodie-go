@@ -36,27 +36,18 @@ export class BuyFood extends React.Component {
     this.makeList = (each,index) => {
       each.push(0)
       return (
-        <li
-          key={each.num}
-          style={{ listStyleType: "none" }}
-          className="foodcard"
-        >
+        <li key={each.num} style={{ listStyleType: "none" }} className="foodcard">
+          <div>
+            <img className='imgbuy' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" />
+          </div>
           <ul style={{ listStyleType: "none" }}>
-            <li key="1">
-              <img
-                height="200"
-                width="200"
-                src={`data:image/*;base64,${each[0][0].data}`}
-                alt="imagealt"
-              />
-            </li>
-            <li key="2">{each[3]} </li>
-            <li key="3">{"₹ " + each[4]}</li>
-            <li key='4'>
+            <li key="1">{each[3]} </li>
+            <li key="2">{"₹ " + each[4]}</li>
+            <li key='3'>
               <div className='countpart'>
-                <div onClick={()=>{this.changeCount(index,-1,each[4])}} >-</div>
+                <button type='button' onClick={()=>{this.changeCount(index,-1,each[4])}} >-</button>
                 <div> {this.state.countlist[index]}</div>
-                <div onClick={()=>{this.changeCount(index,1,each[4])}} >+</div>
+                <button type='button' onClick={()=>{this.changeCount(index,1,each[4])}} >+</button>
               </div>
             </li>
           </ul>
@@ -163,22 +154,31 @@ export class BuyFood extends React.Component {
   render() {
     return (
       <Fragment>
+
         <div className="">{this.state.list}</div>
-        <div>{`Total order price: ${this.state.totalprice}`}</div>
-        <label>Delivery Address:</label>
-        <input type='text'  name='address' onChange={this.handleBuyChange} />
+
+        <div id='buy-form' style={{'textAlign':'center'}} >
+        <br/>
+        <div className='f1 b'><strong>{`Total order price: ${this.state.totalprice}`}</strong></div>
+        <div className='measure2' >
+          <label className='f6 b db mb2'>Delivery Address</label>
+          <input type='text'  name='address' onChange={this.handleBuyChange}
+            className='input-reset ba b--black-20 pa2 mb2 db w-100' />
+          </div>
+          <div className='measure2'>
+          <label className='f6 b db mb2'>Contact Number </label>
+          <input type='number' name='contactno' onChange={this.handleBuyChange}
+            className='input-reset ba b--black-20 pa2 mb2 db w-100' />
+          </div>
+          <br/>
+          {/* <div>{this.state.food_order}</div> */}
+          <div className='f6 b db mb2'>Please order some food</div>
+          <br/>
+          <input type='button' className='btn btn-dark' onClick={this.sendFoodOrder} value="Send Food Order"/>
+
         <br/>
         <br/>
-        <label>Contact Number :</label>
-        <input type='number' name='contactno' onChange={this.handleBuyChange} />
-        <br/>
-        <br/>
-        <input type='button' onClick={this.sendFoodOrder} value="Send Food Order" />
-        <br/>
-        <br/>
-        <div>{this.state.food_order}</div>
-        <br/>
-        <br/>
+        </div>
 
       </Fragment>
     );

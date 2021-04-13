@@ -18,8 +18,8 @@ class Home extends React.Component{
                     <NavLink  exact to="/home/buy">
                         <div className='home-buy'>
                             <div>
-                                <strong>Buy some foodies</strong>
-                                <div>Where customers can buy foodies </div>
+                                <strong className='buysell' >Buy some foodies</strong>
+                                <div className='sub-buysell'>Where customers can buy food items </div>
                             </div>
                             <img id='buy-img'src={buyfood} alt='buy-food'/>
                             <div></div>
@@ -32,8 +32,8 @@ class Home extends React.Component{
                             <div></div>
                             <img id='sell-img' src={sellfood} alt='buy-food'/>
                             <div>
-                                <strong>Sell some foodies</strong>
-                                <div>Where homecooks can sell foodies</div>
+                                <strong className='buysell'>Sell some foodies</strong>
+                                <div className='sub-buysell'>Where homecooks can sell food items</div>
                             </div>
                         </div>
                     </NavLink>

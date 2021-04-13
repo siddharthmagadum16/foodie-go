@@ -1,24 +1,88 @@
+
 .foodcard{
-    width:cover ;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.foodcard > :last-child{
+    margin-top: auto;
+    margin-bottom: 5px;
+}
+
+
+.foodcard > :first-child{
+    border-radius: 10px;
+    /* border: 2px solid red; */
+    background-color: rgb(54, 40, 40);
 }
 
 .cardsgrid{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    padding: 3rem;
+    column-gap: 10rem;
+    row-gap: 2rem;
+
+}
+
+
+.imgbuy{
+    max-width: 100%;
+    max-height: 26vh;
+}
+
+.foodcard > ul{
+    font-weight: 700;
 }
 
 .countpart{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 20%;
 }
 
 .countpart :first-child{
+    outline: none;
+    border: none;
     background-color: pink;
+    cursor: pointer;
 }
 .countpart :nth-child(2){
     background-color: rgb(102, 243, 102);
 }
 .countpart :last-child{
+    border: none;
+    outline:none;
     background-color: rgb(66, 253, 253);
+    cursor: pointer;
+}
+
+.countpart :first-child:active{
+    background-color: red;
+}
+.countpart :last-child:active{
+    background-color: yellow;
+}
+
+#buy-form{
+    background-color: sandybrown;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media all and (max-width:700px) {
+    .cardsgrid{
+        grid-template-columns: 1fr;
+    }
+}
+
+.measure2{
+    display: inline-block;
+    max-width: 30em;
+    margin: 1rem;
+
 }

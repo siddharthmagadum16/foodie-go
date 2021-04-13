@@ -6,6 +6,7 @@ import cookmobile from './cook-mobile.jpg'
 import fooddeliver from './food-deliver.jpg'
 import foodorder from './food-order.jpg'
 import './Welcome.css';
+import logo from './logo.png'
 class Welcome extends React.Component {
 
     render() {
@@ -58,7 +59,7 @@ class Welcome extends React.Component {
                         <div className="carousel-item ">
                           <img src={foodorder} alt="img2" />
                           {/* <div>food lovers visit foodie-go</div> */}
-                          <div className="carousel-caption">food lovers contacts the cook</div>
+                          <div className="carousel-caption">food lovers places the order</div>
                         </div>
                         <div className="carousel-item ">
                           <img src={fooddeliver} alt="img3" />
@@ -75,7 +76,22 @@ class Welcome extends React.Component {
                     </div>
                   </div>
                 </div>
-               
+                <footer className='fourth'>
+                  <div>
+                    <img id='imgfooter'src={logo} alt='logo'/>
+                  </div>
+                  <div>
+                    Foodie-go Contact & Support
+                    <br/>
+                    <br/>
+                    <div>
+                    <a href="mailto:foodie.go963@gmail.com">
+                    <img id='imgsvgmail' src="https://i.imgur.com/JCO0rrM.png"/>
+                    </a>
+                    </div>
+                  </div>
+                </footer>
+
             </div>
         )
     }

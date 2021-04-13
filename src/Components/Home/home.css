@@ -1,12 +1,11 @@
 #buy-img{
   width: 27vw;
-  max-width: 200px;
+  max-width: 250px;
   border-radius: 0 15px 15px 0;
 }
 #sell-img{
   width: 27vw;
-  max-width: 200px;
-  /* box-shadow:rgba(0, 0, 0, 0.8) -5px -5px 9px 5px, rgba(0, 0, 0, 0.8) 5px 5px 9px 5px, inset 40px 40px 100px rgba(235, 72, 72, 0.774), inset -40px -40px 100px rgba(230, 66, 66, 0.74); */
+  max-width: 250px;
   border-radius: 15px 0 0 15px;
 
 }
@@ -15,28 +14,41 @@
   /* top: 0px; */
   width: 100vw;
   display: grid;
-  row-gap: 14vh;
-  grid-template-rows: 0fr 1fr 1fr;
+  row-gap: 9vh;
+  grid-template-rows: 0fr 0fr 0fr;
+  height: 102%;
 }
 
 .home-buy{
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
+
 }
 
 .home-sell{
   display: grid;
   grid-template-columns: 1fr 1fr 3fr;
-  align-items: right;
 }
 
 .home-buy :first-child{
   background-color: rgb(107, 248, 248);
-
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-sell :last-child{
-  background-color: pink;
+  background-color: #fc90a2;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
 }
 
 .home-sell img{
@@ -46,4 +58,31 @@
 
 .home a{
   text-decoration: none;
+}
+
+.buysell{
+  font-size: 3rem;
+}
+
+.sub-buysell{
+  font-size: 1.2rem;
+}
+
+@media all and (max-width:700px) {
+  .signincard{
+      min-width: 80%;
+  }
+
+  .buysell{
+    font-size: 1.2rem;
+  }
+
+  .sub-buysell{
+    font-size: 0.8rem;
+  }
+
+  .home{
+    row-gap: 20vh;
+  }
+
 }

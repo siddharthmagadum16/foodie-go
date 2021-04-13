@@ -2,15 +2,6 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import './Sell.css'
 
-// const initialState={
-//   list: ['Loading ...'],
-//   username: props.username,
-//   foodname: '',
-//   price: '',
-//   place: '',
-//   contactno: '',
-//   image: null
-// }
 export class SellFood extends React.Component {
   constructor(props) {
     super(props);
@@ -24,11 +15,10 @@ export class SellFood extends React.Component {
       image: null
     }
 
-    // this.getFoodList=this.getFoodList.bind(this)
     this.deleteFood=(foodid,username)=>{
         let userurl;
         userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/delete/'.concat(username).concat('/').concat(foodid)
-        // userurl = 'http://localhost:4000'+'/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+        // userurl = 'http://localhost:4000/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
         .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -39,13 +29,15 @@ export class SellFood extends React.Component {
       console.log("each "+ each)
       return (
 
-        <li key={each.num} style={{ listStyleType: "none" }} className="foodcard">
+        <li key={each.num} style={{ listStyleType: "none" }} className="foodcard2">
+          <div>
+            <img className='imgsell' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" />
+          </div>
           <ul style={{ listStyleType: "none"}}>
-            <li key="1"><img height='200' width='200' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" /></li>
-            <li key="2">{each[3]} </li>
-            <li key="3">{"₹ "+ each[4]} </li>
+            <li key="1">{each[3]} </li>
+            <li key="2">{"₹ "+ each[4]} </li>
+            <li key='3'><button onClick={()=>this.deleteFood(each[1],props.username)} type="button" class="btn btn-warning">Remove</button></li>
           </ul>
-          <button onClick={()=>this.deleteFood(each[1],props.username)} >Remove</button>
         </li>
       );
     };
@@ -66,7 +58,7 @@ export class SellFood extends React.Component {
           }else{
             var user_food_list= res.data.map(Object.values)
             user_food_list= user_food_list.map(this.makeList)
-            user_food_list= <ul className="cardsgrid">{user_food_list}</ul>
+            user_food_list= <ul className="cardsgrid2">{user_food_list}</ul>
             this.setState({list: user_food_list})
 
           }
@@ -160,48 +152,47 @@ export class SellFood extends React.Component {
     return (
       <Fragment>
         <div>
-        <h2>Your current food items in foodie-go are : </h2>
+          <br/>
+        <div id='info-list' >Your current food items on foodie-go are listed below </div>
 
-          <div>{this.state.list}</div>
+          <div id='state-list'>{this.state.list}</div>
           <div className='addfoodstuff'>
-                <h1>Homecooks, do you want to sell food?</h1>
 
-                <form  onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
-                    <label>Foodie-name         :</label>
-                    <input required name='foodname' placeholder=''
-                    value={foodname} onChange={this.changeHandler} type='text'/>
+                <form className='pa4 black-80' onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
+                  <div className='sellformpart' >
+                    <div className='measure'>
+                      <label className='f6 b db mb2' >Foodie-name         </label>
+                      <input required name='foodname' placeholder='' className='input-reset ba b--black-20 pa2 mb2 db w-100'
+                      value={foodname} onChange={this.changeHandler} type='text' aria-describedby="name-desc" />
+                    </div>
+                    <div className='measure'>
+                      <label className='f6 b db mb2' >Price       </label>
+                      <input required name='price' placeholder='' value={price}
+                      onChange={this.changeHandler} type='text'  className='input-reset ba b--black-20 pa2 mb2 db w-100' />
+                    </div>
 
-                    <br/>
-                    <br/>
-                    <label>Price       :</label>
-                    <input required name='price' placeholder='' value={price}
-                    onChange={this.changeHandler} type='text'/>
+                    <div className='measure'>
+                      <label className='f6 b db mb2'>Address      </label>
+                      <input required name='place' placeholder=''  className='input-reset ba b--black-20 pa2 mb2 db w-100'
+                      value={place} onChange={this.changeHandler} type='text'/>
+                    </div>
 
-                    <br/>
-                    <br/>
-
-                    <label>Address      :</label>
-                    <input required name='place' placeholder=''
-                     value={place} onChange={this.changeHandler} type='text'/>
-
-                    <br/>
-                    <br/>
-                    <label>Contact Number        :</label>
-                    <input required name='contactno' placeholder=''
+                    <div className='measure'>
+                      <label className='f6 b db mb2' >Contact Number        </label>
+                      <input required name='contactno' placeholder=''   className='input-reset ba b--black-20 pa2 mb2 db w-100'
                       value={contactno} onChange={this.changeHandler} type='number' />
-                    <br/>
-                    <br/>
-                      <label>upload foodie image        :</label>
-                    <input required type='file' id='image' name='image'
-                    accept='image/*' onChange={this.updateSelection}/>
+                    </div>
 
+                    </div>
 
-                    {/* <div> {this.state.username} </div> */}
-                  <br/>
+                    <div className='measure'>
+                      <label className='f6 b db mb2' >Upload foodie image        </label>
+                      <input required type='file' id='image' name='image'   className='input-reset ba b--black-20 pa2 mb2 db w-100'
+                      accept='image/*' onChange={this.updateSelection}/>
+                    </div>
 
-                    <input name='button' type='submit' />
-                    <br/>
-                    <br/>
+                    <button type="submit" name='button'  class="btn btn-dark">Add Food</button>
+
 
                 </form>
             </div>

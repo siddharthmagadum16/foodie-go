@@ -126,6 +126,30 @@
     margin-bottom: 2rem;
 }
 
+.fourth{
+    background-color: #242729;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    padding: 2rem;
+    /* gap: 1rem; */
+}
+.fourth > :first-child{
+    border-right: 2px solid rgba(255, 255, 255, 0.524);
+}
+.fourth > :nth-child(2){
+    color: white;
+
+}
+#imgfooter{
+    height: 50px;
+    width: auto;
+}
+#imgsvgmail{
+    background-color: white;
+    height: 20px;
+}
+
+
 @media all and (max-width: 600px){
 
     .carousel{

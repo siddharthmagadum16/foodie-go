@@ -15,8 +15,8 @@ export class Signin extends React.Component {
 
         this.onSubmitSignin=(event)=>{
             event.preventDefault();
-            axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
-            // axios.post('http://localhost:4000'+'/auth/signin',this.state)
+            // axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
+            axios.post('http://localhost:4000'+'/auth/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
                 // console.log(res)
@@ -54,7 +54,7 @@ export class Signin extends React.Component {
                 <h1>Sign In</h1>
                 <br/>
                 <form   onSubmit={this.onSubmitSignin} method='POST' >
-                    <label>Email      :</label>
+                    <label>Email      </label>
                     <br/>
                     <input
                         required
@@ -66,7 +66,7 @@ export class Signin extends React.Component {
                         type='text'
                     />
                     <br/>
-                    <label>Password        :</label>
+                    <label>Password      </label>
                     <br/>
                     <input
                         required
@@ -85,8 +85,7 @@ export class Signin extends React.Component {
                     <br/>
                     <br/>
                     <h4>{this.state.signin_status}</h4>
-                    <br/>
-                    <br/>
+
                 </form>
             </div>
                 <a style={{"position":"fixed","bottom":"20px","right":"10px",'font-size':'2px','color':'pink'}} href="https://www.freepik.com/vectors/background">bg source</a>
