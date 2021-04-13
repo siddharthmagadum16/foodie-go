@@ -171,8 +171,8 @@ export class BuyFood extends React.Component {
             className='input-reset ba b--black-20 pa2 mb2 db w-100' />
           </div>
           <br/>
-          {/* <div>{this.state.food_order}</div> */}
-          <div className='f6 b db mb2'>Please order some food</div>
+          <div>{this.state.food_order}</div>
+          {/* <div className='f6 b db mb2'>Please order some food</div> */}
           <br/>
           <input type='button' className='btn btn-dark' onClick={this.sendFoodOrder} value="Send Food Order"/>
 

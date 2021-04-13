@@ -65,8 +65,6 @@ class App extends React.Component{
             (this.state.authorised===1 )?(
               <Switch>
               <Route exact path='/' component={Welcome} />
-              {/* <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
-              <Route exact path='/register' component={ ()=> <Register changeAuth={this.changeAuth}/> } /> */}
                 <Route exact path='/home' component={()=> <Home />} />
                 <Route exact path='/home/buy' component={()=><BuyFood username={this.state.username} />} />
                 <Route exact path='/home/sell' component={()=> <SellFood username={this.state.username} />} />
@@ -76,7 +74,6 @@ class App extends React.Component{
               <Switch>
                 <Route exact path='/signin' component={ ()=> <SignIn changeAuth={this.changeAuth}/> }/>
                 <Route exact path='/register' component={ ()=> <Register changeVerificationStatus={this.changeVerificationStatus} changeAuth={this.changeAuth}/> } />
-                {/* <Route exact path='/verify-email' component={ ()=> <Verify changeAuth={this.changeAuth}/> } /> */}
                 <Route exact path='/' component={Welcome} />
                 <Route exact path='*' component={NotFound} />
               </Switch>
