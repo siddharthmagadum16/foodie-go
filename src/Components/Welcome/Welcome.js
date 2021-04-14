@@ -16,7 +16,7 @@ class Welcome extends React.Component {
             <div className="welcome">
                 <div className="first">
                     <img src={welcomeImage}  style={{'filter':'brightness(70%)'}} className=" welcomeImage img-fluid" alt="Responsive image"/>
-                    <div className="slogan">Buy and Sell food</div>
+                    <div className="slogan">Buy or Sell food online</div>
 
                 </div>
                 <div className="second">
