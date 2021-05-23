@@ -5,7 +5,7 @@ import Navbar from './Components/Navigation/Navbar'
 import Home from './Components/Home/Home';
 import Register from './Components/Authentication/Register';
 import SignIn from './Components/Authentication/SignIn';
-import NotFound from './Components/NotFound';
+import NotFound from './Components//NotFound/NotFound';
 import BuyFood from './Components/Home/Home-components/Buy';
 import SellFood from './Components/Home/Home-components/Sell';
 import Welcome from './Components/Welcome/Welcome';

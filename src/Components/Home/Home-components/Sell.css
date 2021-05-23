@@ -19,6 +19,10 @@
     margin-bottom: 5px;
 }
 
+.foodcard2 > :last-child > :nth-child(2){
+    font-size: 1.5rem;
+}
+
 .foodcard2 > :first-child{
     border-radius: 10px;
     /* border: 2px solid red; */
@@ -34,6 +38,18 @@
     font-weight: 700;
 }
 
+.nofoodie > img{
+    height: 20rem;
+}
+
+.nofoodie > div{
+    font-size: 1.4rem;
+}
+
+.addfoodstuff > :first-child{
+    font-size:  1.3rem;
+    padding-top: 20px;
+}
 /* ____ */
 
 .addfoodstuff{
@@ -47,7 +63,7 @@
 }
 
 #info-list{
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 #state-list{ font-size: 1.8rem;}

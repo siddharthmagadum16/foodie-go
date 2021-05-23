@@ -30,7 +30,6 @@ export class BuyFood extends React.Component {
           this.setState({ list: user_food_list })
         })
       }
-      console.log(this.state.countlist)
     }
 
     this.makeList = (each,index) => {
@@ -61,20 +60,14 @@ export class BuyFood extends React.Component {
         .get("https://foodie-go-api-heroku.herokuapp.com/home/buy")
         // .get('http://localhost:4000/home/buy')
         .then((res) => {
-          console.log(res.data);
-          // console.log(Object.values(res.data));
           if (res.data.length === 0) {
-            console.log("Woops! All the foodies are out of stock");
             this.setState({ list: "Woops! All the foodies are out of stock" });
           } else {
-            console.log(res.data)
 
             let countlist= new Array(res.data.length).fill(0)
             this.setState({countlist:countlist})
 
-
             let user_food_list = res.data.map(Object.values)
-            // console.log("user_food_list "+user_food_list)
             this.setState({food_object_list:user_food_list})
 
             user_food_list = user_food_list.map((value,index)=> this.makeList(value,index));
@@ -86,7 +79,7 @@ export class BuyFood extends React.Component {
     };
 
     this.getProducersList=()=>{
-      let userObj= new Object();
+      let userObj= {}
 
       for(let index=0;index<this.state.countlist.length;index++){
         if(this.state.countlist[index]>0){
@@ -96,7 +89,6 @@ export class BuyFood extends React.Component {
           let address= this.state.food_object_list[index][5];
           let contactno= this.state.food_object_list[index][6];
           let quantity= this.state.countlist[index]
-          console.log(username,foodname,price,quantity)
           if(userObj[username]){
             userObj[username].push([foodname,price,quantity])
           }else{
@@ -116,14 +108,11 @@ export class BuyFood extends React.Component {
         return  ;
       }
       let userObj= this.getProducersList();
-      console.log(userObj)
-      console.log(props)
       if(Object.keys(userObj).length){
         let orderdata=[userObj,props.username,this.state.totalprice,this.state.address,this.state.contactno]
         axios.post('https://foodie-go-api-heroku.herokuapp.com/home/buy/send-order',orderdata)
         // axios.post('http://localhost:4000/home/buy/send-order',orderdata)
         .then(res=>{
-          console.log(res)
           if(parseInt(res.data)===1){
             this.setState({food_order:"Your order had been sent successfully\nCheck your email for order details"})
           }
@@ -133,7 +122,6 @@ export class BuyFood extends React.Component {
         })
       }
       else{
-        console.log(Object.keys(userObj).length)
         this.setState({food_order:"Select atleast one foodie with required quantity"})
       }
     }

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import './Sell.css'
+import NoFoodiesvg from  './Empty-foodies.svg'
 
 export class SellFood extends React.Component {
   constructor(props) {
@@ -20,13 +21,12 @@ export class SellFood extends React.Component {
         userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         // userurl = 'http://localhost:4000/home/sell/delete/'.concat(username).concat('/').concat(foodid)
         axios.post(userurl)
-        .then(res=>console.log('deletefood res:'+res))
+        // .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
         .catch(err=>console.log(`err in deleting foodstuff ${err}`))
     }
 
     this.makeList = (each) => {
-      console.log("each "+ each)
       return (
 
         <li key={each.num} style={{ listStyleType: "none" }} className="foodcard2">
@@ -42,19 +42,21 @@ export class SellFood extends React.Component {
       );
     };
 
-    console.log(`props ${props}`);
     this.getFoodList = () => {
-        console.log('getfood list clg')
 
           let userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/'.concat(props.username)
-          // let userurl = 'http://localhost:4000'+'/home/sell/'.concat(props.username)
+          // let userurl = 'http://localhost:4000/home/sell/'.concat(props.username)
         axios
         .post(userurl)
         .then((res) => {
 
           if(res.data.length===0){
-          // console.log(`seller's list length is ${this.state.list.length}`)
+            let nofoodies= <div className='nofoodie'>
+                      <img className='img'  src={NoFoodiesvg} alt="you aren't selling any foodies yet"/>
+                      <div>You aren't selling any foodies yet</div>
+                  </div>
                 this.setState({list: "You aren't selling any foodies yet."})
+                this.setState({list: nofoodies })
           }else{
             var user_food_list= res.data.map(Object.values)
             user_food_list= user_food_list.map(this.makeList)
@@ -80,8 +82,6 @@ export class SellFood extends React.Component {
         let img = event.target.files[0];
         this.setState({
           image: URL.createObjectURL(img)
-        },()=>{
-          console.log(this.state.image)
         });
       }
     }
@@ -90,14 +90,11 @@ export class SellFood extends React.Component {
       this.setState({image: e.target.files[0]});
     }
 
-  //  INSERT ING food ________________________________________________________________1
+  //  INSERTING food ________________________________________________________________1
     this.onSubmitFoodstuff=(event)=>{
         event.preventDefault();
 
-        let t0,t1; // file upload part
-        t0= performance.now()
         let  fd= new FormData();
-        console.log("this.state.image" + this.state.image.name)
         fd.append('image',this.state.image)
         fd.append('foodname',this.state.foodname)
         fd.append('price',this.state.price)
@@ -105,13 +102,9 @@ export class SellFood extends React.Component {
         fd.append('username',this.state.username)
         fd.append('contactno',this.state.contactno)
 
-        t1= performance.now()
-        console.log("uploading total time: "+ t1-t0)
 
-        console.log(this.state.username)
-        console.log(`fooddocument : ${this.state}`)
-        // let url='http://localhost:4000/home/sell/insert/food'
         let url='https://foodie-go-api-heroku.herokuapp.com/home/sell/insert/food'
+        // let url='http://localhost:4000/home/sell/insert/food'
 
         axios({
           method: 'POST',
@@ -121,9 +114,7 @@ export class SellFood extends React.Component {
         })
         .then(res=>parseInt(res.data))
         .then(res=>{
-            console.log(res)
             if(res===1){
-                console.log("foodstuff successfully added")
                 this.setState({
                   foodname: '',
                   price: '',
@@ -154,10 +145,11 @@ export class SellFood extends React.Component {
         <div>
           <br/>
         <div id='info-list' >Your current food items on foodie-go are listed below </div>
-
+        <hr/>
           <div id='state-list'>{this.state.list}</div>
+          <br/>
           <div className='addfoodstuff'>
-
+                <div>Enter the food details</div>
                 <form className='pa4 black-80' onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                   <div className='sellformpart' >
                     <div className='measure'>
@@ -167,8 +159,8 @@ export class SellFood extends React.Component {
                     </div>
                     <div className='measure'>
                       <label className='f6 b db mb2' >Price       </label>
-                      <input required name='price' placeholder='' value={price}
-                      onChange={this.changeHandler} type='text'  className='input-reset ba b--black-20 pa2 mb2 db w-100' />
+                      <input required name='price' placeholder='INR' value={price}
+                      onChange={this.changeHandler} type='number'  className='input-reset ba b--black-20 pa2 mb2 db w-100' />
                     </div>
 
                     <div className='measure'>

@@ -16,10 +16,9 @@ export class Signin extends React.Component {
         this.onSubmitSignin=(event)=>{
             event.preventDefault();
             axios.post('https://foodie-go-api-heroku.herokuapp.com'+'/auth/signin',this.state)
-            // axios.post('http://localhost:4000'+'/auth/signin',this.state)
+            // axios.post('http://localhost:4000/auth/signin',this.state)
             .then(res=>parseInt(res.data))
             .then(res=>{
-                // console.log(res)
                 if(res===1){
                     window.location.href="/home"
                     props.changeAuth(this.state.username);
@@ -30,9 +29,6 @@ export class Signin extends React.Component {
                     return 0
                 }
             })
-            // .then(res=>{
-            //     if(res===1) window.location.href='/home'
-            // })
             .catch(err=>console.log(err))
         }
 
@@ -40,7 +36,6 @@ export class Signin extends React.Component {
             this.setState({
             [event.target.name]: event.target.value
             })
-            // ,()=>console.log(`${this.state.username}${this.state.password}`))
         }
     }
     render(){
@@ -85,10 +80,13 @@ export class Signin extends React.Component {
                     <br/>
                     <br/>
                     <h4>{this.state.signin_status}</h4>
-
+                    <br/>
+                    <div className='testing'>
+                        Note: use username: test@email.com password: 1234 for testing (you won't receive any food order emails)
+                    </div>
                 </form>
             </div>
-                <a style={{"position":"fixed","bottom":"20px","right":"10px",'font-size':'2px','color':'pink'}} href="https://www.freepik.com/vectors/background">bg source</a>
+                <a style={{"position":"fixed","bottom":"20px","right":"10px",'font-size':'12px','color':'pink'}} href="https://www.freepik.com/vectors/background">bg source</a>
             </div>
         )
     }

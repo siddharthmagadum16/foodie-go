@@ -59,7 +59,7 @@ class Welcome extends React.Component {
                         <div className="carousel-item ">
                           <img src={foodorder} alt="img2" />
                           {/* <div>food lovers visit foodie-go</div> */}
-                          <div className="carousel-caption">food lovers places the order</div>
+                          <div className="carousel-caption">food lovers places their order</div>
                         </div>
                         <div className="carousel-item ">
                           <img src={fooddeliver} alt="img3" />
@@ -86,7 +86,7 @@ class Welcome extends React.Component {
                     <br/>
                     <div>
                     <a href="mailto:foodie.go963@gmail.com">
-                    <img id='imgsvgmail' src="https://i.imgur.com/JCO0rrM.png"/>
+                    <img id='imgsvgmail' src="https://i.imgur.com/JCO0rrM.png" alt="mailsvgicon"/>
                     </a>
                     </div>
                   </div>

@@ -79,6 +79,10 @@ label{
     left: 0
 }
 
+.testing{
+    font-size: x-small;
+}
+
 @media all and (max-width:700px) {
     .signincard{
         min-width: 80%;
