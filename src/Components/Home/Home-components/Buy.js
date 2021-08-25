@@ -120,6 +120,7 @@ export class BuyFood extends React.Component {
             this.setState({food_order:"Unable to send order. Please retry"})
           }
         })
+        .catch(err=>this.setState({food_order: `An Error Occurred : ${err}. Please retry`}))
       }
       else{
         this.setState({food_order:"Select atleast one foodie with required quantity"})
