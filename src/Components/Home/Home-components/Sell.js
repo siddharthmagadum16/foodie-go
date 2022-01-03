@@ -18,8 +18,11 @@ export class SellFood extends React.Component {
 
     this.deleteFood=(foodid,username)=>{
         let userurl;
+        if(process.env.REACT_APP_ENV === "PRODUCTION"){
         userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/delete/'.concat(username).concat('/').concat(foodid)
-        // userurl = 'http://localhost:4000/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+      }else {
+        userurl = 'http://localhost:4000/home/sell/delete/'.concat(username).concat('/').concat(foodid)
+      }
         axios.post(userurl)
         // .then(res=>console.log('deletefood res:'+res))
         .then(()=>this.getFoodList())
@@ -36,16 +39,19 @@ export class SellFood extends React.Component {
           <ul style={{ listStyleType: "none"}}>
             <li key="1">{each[3]} </li>
             <li key="2">{"₹ "+ each[4]} </li>
-            <li key='3'><button onClick={()=>this.deleteFood(each[1],props.username)} type="button" class="btn btn-warning">Remove</button></li>
+            <li key='3'><button onClick={()=>this.deleteFood(each[1],props.username)} type="button" className="btn btn-warning">Remove</button></li>
           </ul>
         </li>
       );
     };
 
     this.getFoodList = () => {
-
-          let userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/'.concat(props.username)
-          // let userurl = 'http://localhost:4000/home/sell/'.concat(props.username)
+        let userurl;
+        if(process.env.REACT_APP_ENV === "PRODUCTION"){
+          userurl = 'https://foodie-go-api-heroku.herokuapp.com/home/sell/'.concat(props.username)
+        }else{
+          userurl = 'http://localhost:4000/home/sell/'.concat(props.username)
+        }
         axios
         .post(userurl)
         .then((res) => {
@@ -102,9 +108,13 @@ export class SellFood extends React.Component {
         fd.append('username',this.state.username)
         fd.append('contactno',this.state.contactno)
 
-
-        let url='https://foodie-go-api-heroku.herokuapp.com/home/sell/insert/food'
-        // let url='http://localhost:4000/home/sell/insert/food'
+        let url;
+        if(process.env.REACT_APP_ENV === "PRODUCTION"){
+          url='https://foodie-go-api-heroku.herokuapp.com/home/sell/insert/food'
+        }
+        else{
+          url='http://localhost:4000/home/sell/insert/food'
+        }
 
         axios({
           method: 'POST',

@@ -56,9 +56,13 @@ export class BuyFood extends React.Component {
 
     this.getFoodList = () => {
 
-      axios
-        .get("https://foodie-go-api-heroku.herokuapp.com/home/buy")
-        // .get('http://localhost:4000/home/buy')
+      let url;
+      if(process.env.REACT_APP_ENV === "PRODUCTION"){
+        url = "https://foodie-go-api-heroku.herokuapp.com/home/buy";
+      }else{
+        url = 'http://localhost:4000/home/buy';
+      }
+      axios.get(url)
         .then((res) => {
           if (res.data.length === 0) {
             this.setState({ list: "Woops! All the foodies are out of stock" });
@@ -110,8 +114,14 @@ export class BuyFood extends React.Component {
       let userObj= this.getProducersList();
       if(Object.keys(userObj).length){
         let orderdata=[userObj,props.username,this.state.totalprice,this.state.address,this.state.contactno]
-        axios.post('https://foodie-go-api-heroku.herokuapp.com/home/buy/send-order',orderdata)
-        // axios.post('http://localhost:4000/home/buy/send-order',orderdata)
+        let url;
+        if(process.env.REACT_APP_ENV === "PRODUCTION"){
+          url = 'https://foodie-go-api-heroku.herokuapp.com/home/buy/send-order';
+        }else{
+          url = 'http://localhost:4000/home/buy/send-order';
+        }
+
+        axios.post(url,orderdata)
         .then(res=>{
           if(parseInt(res.data)===1){
             this.setState({food_order:"Your order had been sent successfully\nCheck your email for order details"})
