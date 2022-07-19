@@ -40,8 +40,8 @@ export class BuyFood extends React.Component {
             <img className='imgbuy' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" />
           </div>
           <ul style={{ listStyleType: "none" }}>
-            <li key="1">{each[3]} </li>
-            <li key="2">{"₹ " + each[4]}</li>
+            <li key="1" id='foodname'>{each[3]} </li>
+            <li key="2" id='pricetag'>{"₹ " + each[4]}</li>
             <li key='3'>
               <div className='countpart'>
                 <button type='button' onClick={()=>{this.changeCount(index,-1,each[4])}} >-</button>
@@ -153,32 +153,45 @@ export class BuyFood extends React.Component {
   render() {
     return (
       <Fragment>
+          <div id="food-list">{this.state.list}</div>
 
-        <div className="">{this.state.list}</div>
+          <div id="buy-form" style={{ textAlign: "center" }}>
+            <br />
+            <div className="f1 b">
+              <strong>{`Total order price: ${this.state.totalprice}`}</strong>
+            </div>
+            <div className="measure2">
+              <label className="f6 b db mb2">Delivery Address</label>
+              <input
+                type="text"
+                name="address"
+                onChange={this.handleBuyChange}
+                className="input-reset ba b--black-20 pa2 mb2 db w-100"
+              />
+            </div>
+            <div className="measure2">
+              <label className="f6 b db mb2">Contact Number </label>
+              <input
+                type="number"
+                name="contactno"
+                onChange={this.handleBuyChange}
+                className="input-reset ba b--black-20 pa2 mb2 db w-100"
+              />
+            </div>
+            <br />
+            <div>{this.state.food_order}</div>
+            {/* <div className='f6 b db mb2'>Please order some food</div> */}
+            <br />
+            <input
+              type="button"
+              className="btn btn-dark"
+              onClick={this.sendFoodOrder}
+              value="Send Food Order"
+            />
 
-        <div id='buy-form' style={{'textAlign':'center'}} >
-        <br/>
-        <div className='f1 b'><strong>{`Total order price: ${this.state.totalprice}`}</strong></div>
-        <div className='measure2' >
-          <label className='f6 b db mb2'>Delivery Address</label>
-          <input type='text'  name='address' onChange={this.handleBuyChange}
-            className='input-reset ba b--black-20 pa2 mb2 db w-100' />
+            <br />
+            <br />
           </div>
-          <div className='measure2'>
-          <label className='f6 b db mb2'>Contact Number </label>
-          <input type='number' name='contactno' onChange={this.handleBuyChange}
-            className='input-reset ba b--black-20 pa2 mb2 db w-100' />
-          </div>
-          <br/>
-          <div>{this.state.food_order}</div>
-          {/* <div className='f6 b db mb2'>Please order some food</div> */}
-          <br/>
-          <input type='button' className='btn btn-dark' onClick={this.sendFoodOrder} value="Send Food Order"/>
-
-        <br/>
-        <br/>
-        </div>
-
       </Fragment>
     );
   }

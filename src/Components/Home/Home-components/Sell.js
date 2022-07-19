@@ -37,8 +37,8 @@ export class SellFood extends React.Component {
             <img className='imgsell' src={`data:image/*;base64,${each[0][0].data}`} alt="imagealt" />
           </div>
           <ul style={{ listStyleType: "none"}}>
-            <li key="1">{each[3]} </li>
-            <li key="2">{"₹ "+ each[4]} </li>
+            <li key="1" id='foodname' >{each[3]} </li>
+            <li key="2" id='pricetag' >{"₹ "+ each[4]} </li>
             <li key='3'><button onClick={()=>this.deleteFood(each[1],props.username)} type="button" className="btn btn-warning">Remove</button></li>
           </ul>
         </li>
@@ -159,7 +159,7 @@ export class SellFood extends React.Component {
           <div id='state-list'>{this.state.list}</div>
           <br/>
           <div className='addfoodstuff'>
-                <div>Enter the food details</div>
+                <div>Would like to sell more food? Enter the food details</div>
                 <form className='pa4 black-80' onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                   <div className='sellformpart' >
                     <div className='measure'>

@@ -41,13 +41,16 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     padding: 0 20%;
+    font-size: large;
 }
+
 
 .countpart :first-child{
     outline: none;
     border: none;
     background-color: pink;
     cursor: pointer;
+    border-radius: 5px 0 0 5px;
 }
 .countpart :nth-child(2){
     background-color: rgb(102, 243, 102);
@@ -57,22 +60,16 @@
     outline:none;
     background-color: rgb(66, 253, 253);
     cursor: pointer;
+    border-radius: 0 5px 5px 0;
 }
 
 .countpart :first-child:active{
-    background-color: red;
+    background-color: rgb(245, 79, 79);
 }
 .countpart :last-child:active{
-    background-color: yellow;
+    background-color: rgb(248, 248, 82);
 }
 
-#buy-form{
-    background-color: sandybrown;
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 @media all and (max-width:700px) {
     .cardsgrid{
@@ -84,5 +81,38 @@
     display: inline-block;
     max-width: 30em;
     margin: 1rem;
+}
 
+.measure2 > input {
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+#buy-form {
+    background-color: sandybrown;
+    position: absolute;
+    bottom: 0px;
+    height: 35vh;
+    width: 100%;
+    margin: 0;
+}
+
+#food-list {
+    font-size: 2rem;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    height: 60vh;
+    position: relative;
+    overflow-y: auto;
+}
+
+#foodname, #pricetag {
+    font-size: 1.3rem;
 }

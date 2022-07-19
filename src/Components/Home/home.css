@@ -12,7 +12,7 @@
 
 .home{
   /* top: 0px; */
-  width: 100vw;
+  width: 100%;
   display: grid;
   row-gap: 9vh;
   grid-template-rows: 0fr 0fr 0fr;
