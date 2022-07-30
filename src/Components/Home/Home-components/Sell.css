@@ -48,7 +48,7 @@
 }
 
 .addfoodstuff > :first-child{
-    font-size:  1.3rem;
+    font-size:  1.7rem;
     font-weight: bold;
     font-family: 'Edu TAS Beginner', cursive;
     font-family: 'Zen Kurenaido', sans-serif;
@@ -57,7 +57,7 @@
 /* ____ */
 
 .addfoodstuff{
-    background-color: rgb(185, 102, 245);
+    background-color:sandybrown;
     width: 100%;
 }
 
@@ -81,6 +81,12 @@
     height: 60vh;
     position: relative;
     overflow-y: auto;
+}
+
+#nofoodies {
+  font-family: 'Edu TAS Beginner', cursive;
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-size: 2rem;
 }
 
 

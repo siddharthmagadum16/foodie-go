@@ -1,5 +1,6 @@
 import React from 'react';
-import welcomeImage from './plated-tacos.jpg';
+// import welcomeImage from './plated-tacos.jpg';
+import welcomeImage from './main.jpg';
 import eatingfood from './eating-food.png'
 import cookingfood from './cooking-food.png'
 import cookmobile from './cook-mobile.jpg'
@@ -16,7 +17,7 @@ class Welcome extends React.Component {
             <div className="welcome">
                 <div className="first">
                     <img src={welcomeImage}  style={{'filter':'brightness(70%)'}} className=" welcomeImage img-fluid" alt="Responsive image"/>
-                    <div className="slogan">Buy or Sell food online</div>
+                    <div className="slogan">Order or Sell food online</div>
 
                 </div>
                 <div className="second">

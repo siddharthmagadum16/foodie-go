@@ -18,7 +18,7 @@ class Home extends React.Component{
                     <NavLink  exact to="/home/buy">
                         <div className='home-buy'>
                             <div>
-                                <strong className='buysell' >Buy some foodies</strong>
+                                <strong className='buysell' >Order some foodies</strong>
                                 <div className='sub-buysell'>Where customers can buy food items </div>
                             </div>
                             <img id='buy-img'src={buyfood} alt='buy-food'/>

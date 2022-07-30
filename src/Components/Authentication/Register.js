@@ -95,7 +95,7 @@ export class Register extends React.Component {
                     type='password'
                 />
                 <br/>
-                <input name='button' className="btn btn-primary" type="button" value={this.state.send} onClick={this.sendVerificationCode}/>
+                <input name='button' className="btn btn-dark" type="button" value={this.state.send} onClick={this.sendVerificationCode}/>
                 <br/>
                 <br/>
                 <div>{this.state.codestatus}</div>

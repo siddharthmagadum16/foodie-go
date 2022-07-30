@@ -48,26 +48,26 @@
 .countpart :first-child{
     outline: none;
     border: none;
-    background-color: pink;
+    background-color: rgb(255, 178, 191);
     cursor: pointer;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
 }
 .countpart :nth-child(2){
-    background-color: rgb(102, 243, 102);
+    background-color: rgb(253, 253, 253);
 }
 .countpart :last-child{
     border: none;
     outline:none;
-    background-color: rgb(66, 253, 253);
+    background-color: rgb(93, 209, 209);
     cursor: pointer;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
 }
 
 .countpart :first-child:active{
-    background-color: rgb(245, 79, 79);
+    background-color: rgb(250, 185, 129);
 }
 .countpart :last-child:active{
-    background-color: rgb(248, 248, 82);
+    background-color: rgb(250, 185, 129);
 }
 
 
@@ -97,10 +97,13 @@ input::-webkit-inner-spin-button {
 #buy-form {
     background-color: sandybrown;
     position: absolute;
-    bottom: 0px;
+    /* bottom: 0px; */
     height: 35vh;
     width: 100%;
     margin: 0;
+    overflow: hidden;
+    /* border: 30px solid black; */
+    /* padding: 30px; */
 }
 
 #food-list {

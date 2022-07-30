@@ -16,7 +16,7 @@
   display: grid;
   row-gap: 9vh;
   grid-template-rows: 0fr 0fr 0fr;
-  height: 102%;
+  /* position: relative; */
 }
 
 .home-buy{
@@ -31,7 +31,8 @@
 }
 
 .home-buy :first-child{
-  background-color: rgb(107, 248, 248);
+  /* background-color: rgb(107, 248, 248); */
+  background-color: rgb(250, 185, 129);
   text-align: center;
   color: black;
   display: flex;
@@ -41,7 +42,7 @@
 }
 
 .home-sell :last-child{
-  background-color: #fc90a2;
+  background-color: rgb(250, 185, 129);
   text-align: center;
   color: black;
   display: flex;
@@ -62,10 +63,16 @@
 
 .buysell{
   font-size: 3rem;
+  font-family: 'Exo 2', sans-serif;
 }
 
 .sub-buysell{
   font-size: 1.2rem;
+
+  font-family: 'Edu TAS Beginner', cursive;
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-weight: bold !important;
+
 }
 
 @media all and (max-width:700px) {

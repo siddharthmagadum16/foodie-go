@@ -13,15 +13,14 @@
 
     position: absolute;
     display: inline-block;
-    top: 30%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%,20%);
-    font-family: 'Literata', serif;
-    font-family: 'Raleway', sans-serif;
-    font-size: 7vw;
-    color: rgb(7, 241, 163);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 6vw;
+    color: rgb(77, 248, 191);
     /* text-shadow: -.0001px -.0001px 0 #000, .0001px -.0001px 0 #000, -.0001px .1px 0 #000, .0001px .0001px 0 #000; */
-    line-height: 6vw;
+    line-height: 8vw;
     text-shadow: 5px 5px 5px rgb(24, 29, 22), -1px -1px 6px rgb(28, 31, 3);
     /* font-weight: bold; */
 
@@ -32,6 +31,7 @@
     /* position: absolute; */
     left: 0;
     top: 0;
+    height: 110%;
 
 }
 

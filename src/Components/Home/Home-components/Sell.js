@@ -59,7 +59,7 @@ export class SellFood extends React.Component {
           if(res.data.length===0){
             let nofoodies= <div className='nofoodie'>
                       <img className='img'  src={NoFoodiesvg} alt="you aren't selling any foodies yet"/>
-                      <div>You aren't selling any foodies yet</div>
+                      <div id='nofoodies'>You aren't selling any foodies yet</div>
                   </div>
                 this.setState({list: "You aren't selling any foodies yet."})
                 this.setState({list: nofoodies })
@@ -159,7 +159,7 @@ export class SellFood extends React.Component {
           <div id='state-list'>{this.state.list}</div>
           <br/>
           <div className='addfoodstuff'>
-                <div>Would like to sell more food? Enter the food details</div>
+                <div>Would like to sell a foodie? Enter the food details below</div>
                 <form className='pa4 black-80' onSubmit={this.onSubmitFoodstuff} method='POST' encType="multipart/form-data" >
                   <div className='sellformpart' >
                     <div className='measure'>

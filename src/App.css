@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@600&family=Zen+Kurenaido&display=swap');
+
 .App {
   text-align: center;
-  /* position: static; */
-  min-height: 100vh;
+  position: relative;
+  /* min-height: 80vh; */
 }
 
 
@@ -18,7 +20,13 @@
     position: absolute;
     width: 100%;
 	/* background-color: rgba(7, 68, 68, 0.367); */
-	/* top: 65px; */
-  bottom: 0px;
-	height: 90vh;
+	top: 65px;
+    bottom: 0px;
+	/* height: 90vh; */
+}
+
+* {
+    /* font-weight: bold; */
+    /* font-family: 'Edu TAS Beginner', cursive !important; */
+    font-family: 'Zen Kurenaido', sans-serif;
 }

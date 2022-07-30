@@ -67,7 +67,7 @@ nav  ul li.items{
     transition: all 0.2s linear;
 }
 .items .name-link:hover:after{
-    background: #33ffff;
+    background: #f68326;
   opacity: 1;
   bottom: 1px;
 }
@@ -79,10 +79,11 @@ nav ul li.leftsub b{
 .name-link{
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: white;
+    color: rgb(250, 185, 129);
+    font-family: 'Exo 2', sans-serif;
 }
 .name-link:active, .name-link:hover{
-    color: white;
+    color: rgb(253, 216, 185);;
 }
 
 .name > .name-link{
